@@ -1,0 +1,1288 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Let’s chat about JupyterLab and Juptyer notebooks &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'data-types';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Iteration and Control Flow" href="iteration.html" />
+    <link rel="prev" title="Data Bootcamp" href="syllabus.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="syllabus.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My sample book</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="syllabus.html">
+                    Data Bootcamp
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Let’s chat about JupyterLab and Juptyer notebooks</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="iteration.html">Iteration and Control Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises.html">Python Iteration and Control Flow Exercises</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdata-types.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/data-types.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Let’s chat about JupyterLab and Juptyer notebooks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Let’s chat about JupyterLab and Juptyer notebooks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">Markdown</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#it-s-good-for-communication">It’s good for communication!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#things-can-be-different-sizes">Things can be different sizes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#big-heading">big heading</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smaller-heading">smaller heading</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-is-a-calculator">Python is a Calculator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-rules">Naming Rules</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-naming-rules-mandatory">Variable naming rules (mandatory)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-naming-rules-good-manners">Variable naming rules (good manners)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#math-exercise">Math exercise :</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-turn-that-into-code-with-variables">Let’s turn that into code with variables.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-is-a-data-type">So, what is a “data type”?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-in-the-habit-of-checking-the-type-of-something-when-you-don-t-know-what-it-is">⭐️ Get in the habit of checking the type of something when you don’t know what it is.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-math">String Math!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slicin-strings">Slicin’ Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collection-types">Collection Types!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-operations">List Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-are-a-big-deal">Dictionaries are a big deal!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keys-values-and-items"><code class="docutils literal notranslate"><span class="pre">.keys()</span></code> <code class="docutils literal notranslate"><span class="pre">.values()</span></code> and <code class="docutils literal notranslate"><span class="pre">.items()</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#items-gives-you-keys-and-values"><code class="docutils literal notranslate"><span class="pre">.items()</span></code> gives you keys and values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#booleans">Booleans</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#and-a-and-b-only-yields-true-if-both-a-and-b-are-true"><code class="docutils literal notranslate"><span class="pre">and</span></code>: <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">and</span> <span class="pre">B</span></code> only yields <code class="docutils literal notranslate"><span class="pre">True</span></code> if both A and B are true</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#food-for-thought">Food for thought</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#today-we-covered">Today we covered…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-for-understanding">Check for Understanding</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <hr class="docutils" />
+<section id="let-s-chat-about-jupyterlab-and-juptyer-notebooks">
+<h1>Let’s chat about JupyterLab and Juptyer notebooks<a class="headerlink" href="#let-s-chat-about-jupyterlab-and-juptyer-notebooks" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>JupyterLab vs Jupyter notebooks</p></li>
+<li><p>Seeing Files</p></li>
+<li><p>Kernels</p></li>
+<li><p>Running cells</p></li>
+<li><p>State</p></li>
+<li><p>Code cells vs Markdown cells</p></li>
+<li><p><a class="reference external" href="https://gist.github.com/discdiver/9e00618756d120a8c9fa344ac1c375ac">Keyboard shortcuts</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="markdown">
+<h1>Markdown<a class="headerlink" href="#markdown" title="Link to this heading">#</a></h1>
+<p>I am typing in <code class="docutils literal notranslate"><span class="pre">markdown</span></code>. It’s a subset of HTML. Nothing “runs” in a Markdown cell.</p>
+<section id="it-s-good-for-communication">
+<h2>It’s good for communication!<a class="headerlink" href="#it-s-good-for-communication" title="Link to this heading">#</a></h2>
+<section id="things-can-be-different-sizes">
+<h3>Things can be different sizes<a class="headerlink" href="#things-can-be-different-sizes" title="Link to this heading">#</a></h3>
+<p><em>Go to the <strong>Help</strong> menu for a Markdown tutorial if needed.</em></p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="big-heading">
+<h1>big heading<a class="headerlink" href="#big-heading" title="Link to this heading">#</a></h1>
+<section id="smaller-heading">
+<h2>smaller heading<a class="headerlink" href="#smaller-heading" title="Link to this heading">#</a></h2>
+<p>In Slack and Jupyter, you can format your code with Markdown. This code will not run.</p>
+<p>One backtick:</p>
+<p><code class="docutils literal notranslate"><span class="pre">this</span> <span class="pre">is</span> <span class="pre">inline</span> <span class="pre">code</span></code></p>
+<p>Three backticks:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>this is a block of code
+ok?
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="python">
+<h1>Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h1>
+<section id="python-is-a-calculator">
+<h2>Python is a Calculator<a class="headerlink" href="#python-is-a-calculator" title="Link to this heading">#</a></h2>
+<p><em>(…just like every other programming language)</em></p>
+<p>Let’s learn some common mathematical operations with integer values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a code cell.</span>
+<span class="c1"># This is a comment in a code cell.</span>
+
+
+<span class="c1"># Addition</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comments don&#39;t do anything but communicate (and stop the code in them from running)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Subtraction (note we can have negative numbers!)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiplication</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Division</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exponentiation (do NOT use ^)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modular division (&quot;mod&quot; for short) (Remainder Division)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Floor division (ie &quot;round down&quot; division)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Link to this heading">#</a></h2>
+<p>Great - Python is just a fancy calculator. It’s also important for us to be able to save numbers as <strong>variables</strong> so we can reference them later without memorizing their value.</p>
+</section>
+<hr class="docutils" />
+<section id="naming-rules">
+<h2>Naming Rules<a class="headerlink" href="#naming-rules" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p><em>There are only two hard things in Computer Science: cache invalidation and naming things.</em> - Phil Karlton</p>
+</div></blockquote>
+<p>You can <em>pretty much</em> name variables whatever you want. But, there are a few rules we should follow. Some are strict, some are just good manners.</p>
+<section id="variable-naming-rules-mandatory">
+<h3>Variable naming rules (mandatory)<a class="headerlink" href="#variable-naming-rules-mandatory" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Names can only consist of letters, underscores, and numbers.</p></li>
+<li><p>Names can’t begin with numbers.</p></li>
+<li><p>You can’t name a variable after a built-in Python keyword (eg <code class="docutils literal notranslate"><span class="pre">if</span></code>).</p></li>
+</ul>
+</section>
+<section id="variable-naming-rules-good-manners">
+<h3>Variable naming rules (good manners)<a class="headerlink" href="#variable-naming-rules-good-manners" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Names should <em><strong>always</strong></em> be descriptive (ie, don’t name variables <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">df</span></code>)</p></li>
+<li><p>No capital letters!</p></li>
+<li><p>Variables should not begin with an underscore (this means something special)</p></li>
+<li><p>Multi-word variables should be in <code class="docutils literal notranslate"><span class="pre">snake_case</span></code>. All lower case separated by underscores.</p></li>
+<li><p>Technically, you <em>can</em> name variables after built-in Python <em>functions</em> (like <code class="docutils literal notranslate"><span class="pre">print</span></code>), but it’s an <em>extremely</em> bad idea to do so.</p>
+<ul>
+<li><p>Rule of thumb: If a variable name turns green, don’t use it!</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="math-exercise">
+<h3>Math exercise :<a class="headerlink" href="#math-exercise" title="Link to this heading">#</a></h3>
+<p>Recall the quadratic formula you may have learned for solving a polynomial equation with coefficients <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]</div>
+<section id="let-s-turn-that-into-code-with-variables">
+<h4>Let’s turn that into code with variables.<a class="headerlink" href="#let-s-turn-that-into-code-with-variables" title="Link to this heading">#</a></h4>
+<p>Hint: a square root is the same as raising something to the .5 power</p>
+<div class="math notranslate nohighlight">
+\[y = x^2 - x - 2\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Slack thread: Give me the code to produce the positive number root</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="so-what-is-a-data-type">
+<h2>So, what is a “data type”?<a class="headerlink" href="#so-what-is-a-data-type" title="Link to this heading">#</a></h2>
+<p>Data can come in various <strong>types.</strong> We’ve already seen two types!</p>
+<ol class="arabic simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">int</span></code> type: Integers with no decimal part (eg <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">-30</span></code>, <code class="docutils literal notranslate"><span class="pre">14</span></code>)</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">float</span></code> type: Numbers with a decimal part, even if that part is zero (eg <code class="docutils literal notranslate"><span class="pre">2.5</span></code>, <code class="docutils literal notranslate"><span class="pre">3.141</span></code>, <code class="docutils literal notranslate"><span class="pre">2**0.5</span></code>, <code class="docutils literal notranslate"><span class="pre">-3.0</span></code>)</p></li>
+</ol>
+<p>Curious about what an object’s data type is? Simply use the <code class="docutils literal notranslate"><span class="pre">type()</span></code> function to ask!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># int</span>
+<span class="nb">type</span><span class="p">(</span><span class="mf">4.2</span><span class="p">)</span> <span class="c1"># float</span>
+</pre></div>
+</div>
+<section id="get-in-the-habit-of-checking-the-type-of-something-when-you-don-t-know-what-it-is">
+<h3>⭐️ Get in the habit of checking the type of something when you don’t know what it is.<a class="headerlink" href="#get-in-the-habit-of-checking-the-type-of-something-when-you-don-t-know-what-it-is" title="Link to this heading">#</a></h3>
+<p>Depending on the data type you can do different things with the object!</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="strings">
+<h2>Strings<a class="headerlink" href="#strings" title="Link to this heading">#</a></h2>
+<p>Strings are how we store text data in Python. Strings are <em>strings of characters</em> between either double quotes (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>) or single quotes (<code class="docutils literal notranslate"><span class="pre">'</span></code>). Python doesn’t care which as long as they match.</p>
+<p>The <strong>print</strong> statement prints the value assigned to the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> on the screen.</p>
+<p>The <strong>print</strong> statement removes the quotations, whereas just running they jupyter cell with <code class="docutils literal notranslate"><span class="pre">x</span></code> at the last line leaves the quotations in.</p>
+</section>
+<section id="string-math">
+<h2>String Math!<a class="headerlink" href="#string-math" title="Link to this heading">#</a></h2>
+<p>We can operate on strings. Everything in Python is an object of some <strong>type</strong>. Objects can be operated on with their respective <strong>methods</strong>.</p>
+<p>Methods are actions we can perform on a type using the following syntax:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">variable</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To understand what methods are available and how they work we typically refer to documentation. <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#string-methods">Here</a> is the documentation around string methods.  Look through the documentation and determine the following.</p>
+<ul class="simple">
+<li><p>How can you capitalize a string?</p></li>
+<li><p>How can you find a sub-string within a string?  How do we interpret the results?</p></li>
+<li><p>How can you make all characters lowercase in a string?  Does this change maintain on the original variable?</p></li>
+<li><p>What does the <code class="docutils literal notranslate"><span class="pre">.join()</span></code> method do?</p></li>
+<li><p>What does the <code class="docutils literal notranslate"><span class="pre">.split()</span></code> method do?  What kind of object is returned?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_string</span> <span class="o">=</span> <span class="s1">&#39;lenNy&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="slicin-strings">
+<h2>Slicin’ Strings<a class="headerlink" href="#slicin-strings" title="Link to this heading">#</a></h2>
+<p>We may also want to pick apart our strings. We can do this by <strong>indexing</strong> or <strong>slicing</strong>. In fact, you can index or slice several different types in Python. For example:</p>
+<ul class="simple">
+<li><p>Strings</p></li>
+<li><p>Lists</p></li>
+<li><p>Tuples</p></li>
+<li><p>Sets</p></li>
+</ul>
+<hr class="docutils" />
+<p>All of the above types can be accessed using brackets in the following ways:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">s[0]</span></code></strong> References the first element</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">s[0:4]</span></code></strong> References the first <strong>4</strong> elements of a string from index <strong><code class="docutils literal notranslate"><span class="pre">0</span></code></strong>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">s[-1]</span></code></strong> Reference the <em>first</em> item in reverse order (or the last item).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">s[-2]</span></code></strong> Reference the <em>second</em> item in reverse order (second to last item).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">s[0:-3]</span></code></strong> Reference everyting <em>execept the last 3</em> elements.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">astring</span> <span class="o">=</span> <span class="s1">&#39;Lenny the dog.&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First character</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Second character</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Second through fourth characters</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First 5 characters</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Last character</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Last 5 characters</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># THREAD: Get the word &quot;programming&quot; from the string s.</span>
+<span class="c1"># Do it two ways: Using slicing and using .split()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="collection-types">
+<h2>Collection Types!<a class="headerlink" href="#collection-types" title="Link to this heading">#</a></h2>
+<p>We often want to store many values in one variable. A <em>collection</em>. There are several collection types in Python. The first and most common is…</p>
+<section id="lists">
+<h3>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h3>
+<p>Lists are mutable, heterogeneous collections.</p>
+<ul class="simple">
+<li><p><strong>Mutable</strong> = They can be changed</p></li>
+<li><p><strong>Heterogeneous</strong> = They can hold values of different data types</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reference 1st item</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reference 2nd item</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The last one</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Every other name, starting with the third</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backwards! - reverse it with -1 at the end</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-operations">
+<h3>List Operations<a class="headerlink" href="#list-operations" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Append</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># append mutates the list in place!!!!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove</span>
+     <span class="c1"># in-place method, removes first occurence</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Join??? Join is different but powerful.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tuples">
+<h3>Tuples<a class="headerlink" href="#tuples" title="Link to this heading">#</a></h3>
+<p>Tuples are less common than lists, but very similar. They are immutable and heterogeneous</p>
+<ul class="simple">
+<li><p><strong>Immutable</strong> = Once made, they can never be changed.</p></li>
+<li><p><strong>Heterogeneous</strong> = They can contain values of different types</p></li>
+</ul>
+<p>For our purposes, you can just think of tuples as immutable lists. Traditionally they’re used to hold short sequences of variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Can slice and index like a list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bzzzt! Illegal. Tuples are immutable.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What’s the symbol for:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="c1"># Lists</span>
+ <span class="c1"># Dictionaries &amp; Sets</span>
+ <span class="c1"># Tuples</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sets">
+<h2>Sets<a class="headerlink" href="#sets" title="Link to this heading">#</a></h2>
+<p>Sets are unordered, unique collections. Just like traditional sets in a math class.</p>
+<p>We’ll see sets rarely, but it’s worth knowing they exist. They come in handy in coding challenges. 😉</p>
+</section>
+<section id="dictionaries">
+<h2>Dictionaries!<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h2>
+<p>Dictionaries are very common. They’re unordered, mutable key-value pairs.</p>
+<p>Think of them like an actual dictionary. The key is the “word” and the value is the “definition”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">state_capitals</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Washington&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Olympia&#39;</span><span class="p">,</span> <span class="s1">&#39;Seattle&#39;</span><span class="p">],</span> 
+    <span class="s1">&#39;Texas&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Austin&#39;</span><span class="p">,</span> <span class="s1">&#39;Dallas&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Connecticut&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Hartford&#39;</span><span class="p">,</span> <span class="s1">&#39;Bridgeport&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Colorado&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Denver&#39;</span><span class="p">,</span> <span class="s1">&#39;Boulder&#39;</span><span class="p">,</span> <span class="s1">&#39;Aspen&#39;</span><span class="p">,</span> <span class="s1">&#39;Durango&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Michigan&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Lansing&#39;</span><span class="p">,</span> <span class="s1">&#39;Detroit&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bzzt! Remember, dictionaries are unordered. No such thing as &quot;first&quot; element </span>
+<span class="c1"># (kind of)!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, the items in them will print in the order that they were inserted! (Dictionaries are insertion ordered now, this was not the case in early versions of Python)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">state_capitals</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Washington&#39;: [&#39;Olympia&#39;, &#39;Seattle&#39;],
+ &#39;Texas&#39;: [&#39;Austin&#39;, &#39;Dallas&#39;],
+ &#39;Connecticut&#39;: [&#39;Hartford&#39;, &#39;Bridgeport&#39;],
+ &#39;Colorado&#39;: [&#39;Denver&#39;, &#39;Boulder&#39;, &#39;Aspen&#39;, &#39;Durango&#39;],
+ &#39;Michigan&#39;: [&#39;Lansing&#39;, &#39;Detroit&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">state_capitals</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Washington&#39;: [&#39;Olympia&#39;, &#39;Seattle&#39;],
+ &#39;Texas&#39;: [&#39;Austin&#39;, &#39;Dallas&#39;],
+ &#39;Connecticut&#39;: [&#39;Hartford&#39;, &#39;Bridgeport&#39;],
+ &#39;Colorado&#39;: [&#39;Denver&#39;, &#39;Boulder&#39;, &#39;Aspen&#39;, &#39;Durango&#39;],
+ &#39;Michigan&#39;: [&#39;Lansing&#39;, &#39;Detroit&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># .get()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">my_dict.get(some_key)</span></code>  is the preferred way to access a value in a dictionary!</p>
+<p>You often want to have a “default” value for keys that don’t exist. You can do this by passing a second argument to the <code class="docutils literal notranslate"><span class="pre">get</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">state_capitals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="s1">&#39;nope&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;nope&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dictionaries-are-a-big-deal">
+<h2>Dictionaries are a big deal!<a class="headerlink" href="#dictionaries-are-a-big-deal" title="Link to this heading">#</a></h2>
+<p>Dictionaries can get really big and really complicated, like the one below.</p>
+<p>This is a very efficient way to store complicated data that don’t fit neatly in a spreadsheet. In fact, dictionaries are the data type used by most web APIs! We’ll need to parse big dictionaries to get data from the internet!</p>
+<p>Dictionaries are also faster for a computer to find information in than lists.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">authors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;J.R.R. Tolkien&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;genre&quot;</span><span class="p">:</span> <span class="s2">&quot;fantasy&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;books&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;The Fellowship of the Ring&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;The Two Towers&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;The Return of the King&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;J.K. Rowling&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;genre&quot;</span><span class="p">:</span> <span class="s2">&quot;fantasy&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;books&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;The Sorcerer&#39;s Stone&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;The Chamber of Secrets&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;The Prisoner of Azkaban&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;The Goblet of Fire&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;The Order of the Phoenix&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;The Half-Blood Prince&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;The Deathly Hallows&quot;</span>
+            
+        <span class="p">],</span>
+        <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;phone&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="s2">&quot;(281) 330-8004&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;work&quot;</span><span class="p">:</span> <span class="s2">&quot;(800) HP0-TTER&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Suzanne Collins&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;genre&quot;</span><span class="p">:</span> <span class="s2">&quot;science fiction&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;books&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;The Hunger Games&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;Catching Fire&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;Mockingjay&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;phone&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What <code class="docutils literal notranslate"><span class="pre">types</span></code> are in the dictionary?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># THREAD: Get me Tokien&#39;s 3rd book</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get Suzanne Collins&#39; 3rd book</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="keys-values-and-items">
+<h3><code class="docutils literal notranslate"><span class="pre">.keys()</span></code> <code class="docutils literal notranslate"><span class="pre">.values()</span></code> and <code class="docutils literal notranslate"><span class="pre">.items()</span></code><a class="headerlink" href="#keys-values-and-items" title="Link to this heading">#</a></h3>
+<section id="items-gives-you-keys-and-values">
+<h4><code class="docutils literal notranslate"><span class="pre">.items()</span></code> gives you keys and values<a class="headerlink" href="#items-gives-you-keys-and-values" title="Link to this heading">#</a></h4>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="booleans">
+<h2>Booleans<a class="headerlink" href="#booleans" title="Link to this heading">#</a></h2>
+<p>Booleans are variables that only have two different values: <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>They’re named after their founder, <strong>George Boole</strong> and will come in real handy when we discuss control flow this afternoon.</p>
+<p>You can do three operations with booleans : <code class="docutils literal notranslate"><span class="pre">not</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code>, and <code class="docutils literal notranslate"><span class="pre">or</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># not: Simply gives the opposite</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="and-a-and-b-only-yields-true-if-both-a-and-b-are-true">
+<h3><code class="docutils literal notranslate"><span class="pre">and</span></code>: <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">and</span> <span class="pre">B</span></code> only yields <code class="docutils literal notranslate"><span class="pre">True</span></code> if both A and B are true<a class="headerlink" href="#and-a-and-b-only-yields-true-if-both-a-and-b-are-true" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">or</span></code>: <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">or</span> <span class="pre">B</span></code> only yields <code class="docutils literal notranslate"><span class="pre">False</span></code> if both A and B are false</p>
+<p><strong>We rarely define variables to be <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. More often, we get them from asking Python math problems.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Greater than</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Less than</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Greater than or equal to</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Break it into parts WITHIN parentheses</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Not equal to</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Equal to</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Single equals sign is assignment NOT checking whether two values are the same.</p>
+<p>Common error!</p>
+</section>
+</section>
+<section id="food-for-thought">
+<h2>Food for thought<a class="headerlink" href="#food-for-thought" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Why does <code class="docutils literal notranslate"><span class="pre">0.2</span> <span class="pre">+</span> <span class="pre">0.1</span> <span class="pre">==</span> <span class="pre">0.3</span></code> yield the answer it does?</p></li>
+<li><p>Why does <code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">==</span> <span class="pre">1</span></code> yield the answer it does?</p></li>
+<li><p>Why does <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span> <span class="pre">+</span> <span class="pre">3</span></code> yield an error?</p></li>
+<li><p>What happens when you add two lists?</p></li>
+<li><p>What happens when you multiply a list (or a string!) by an integer? Why does this happen?</p>
+<ul>
+<li><p>e.g. <code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span> <span class="pre">*</span> <span class="pre">20</span></code> or <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4]</span> <span class="pre">*</span> <span class="pre">2</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="today-we-covered">
+<h2>Today we covered…<a class="headerlink" href="#today-we-covered" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Basic Jupyter Notebook use</p></li>
+<li><p>Basic math in Python</p></li>
+<li><p>String manipulation in Python</p></li>
+<li><p>Collection data types in Python</p></li>
+<li><p>Booleans in Python</p></li>
+</ul>
+</section>
+<section id="check-for-understanding">
+<h2>Check for Understanding<a class="headerlink" href="#check-for-understanding" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Make a list</p></li>
+<li><p>Get the second to last item from the list</p></li>
+<li><p>Make a dictionary</p></li>
+<li><p>Get a value from the dictionary</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="syllabus.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Bootcamp</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="iteration.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Iteration and Control Flow</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Let’s chat about JupyterLab and Juptyer notebooks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">Markdown</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#it-s-good-for-communication">It’s good for communication!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#things-can-be-different-sizes">Things can be different sizes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#big-heading">big heading</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smaller-heading">smaller heading</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-is-a-calculator">Python is a Calculator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-rules">Naming Rules</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-naming-rules-mandatory">Variable naming rules (mandatory)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-naming-rules-good-manners">Variable naming rules (good manners)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#math-exercise">Math exercise :</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-turn-that-into-code-with-variables">Let’s turn that into code with variables.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-is-a-data-type">So, what is a “data type”?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-in-the-habit-of-checking-the-type-of-something-when-you-don-t-know-what-it-is">⭐️ Get in the habit of checking the type of something when you don’t know what it is.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-math">String Math!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slicin-strings">Slicin’ Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collection-types">Collection Types!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-operations">List Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-are-a-big-deal">Dictionaries are a big deal!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keys-values-and-items"><code class="docutils literal notranslate"><span class="pre">.keys()</span></code> <code class="docutils literal notranslate"><span class="pre">.values()</span></code> and <code class="docutils literal notranslate"><span class="pre">.items()</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#items-gives-you-keys-and-values"><code class="docutils literal notranslate"><span class="pre">.items()</span></code> gives you keys and values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#booleans">Booleans</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#and-a-and-b-only-yields-true-if-both-a-and-b-are-true"><code class="docutils literal notranslate"><span class="pre">and</span></code>: <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">and</span> <span class="pre">B</span></code> only yields <code class="docutils literal notranslate"><span class="pre">True</span></code> if both A and B are true</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#food-for-thought">Food for thought</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#today-we-covered">Today we covered…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-for-understanding">Check for Understanding</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
