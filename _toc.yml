@@ -7,4 +7,6 @@ chapters:
 - file: data-types
 - file: iteration
 - file: exercises
+- file: functions
+- file: oop
 - file: extra_resources
