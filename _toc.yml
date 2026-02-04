@@ -9,4 +9,6 @@ chapters:
 - file: exercises
 - file: functions
 - file: oop
+- file: pandas_intro
+- file: pandas_II
 - file: extra_resources
