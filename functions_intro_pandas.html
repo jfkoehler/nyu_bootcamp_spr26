@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Functions and Classes &#8212; Data Bootcamp</title>
+    <title>Libraries and Other Peoples Objects &#8212; Data Bootcamp</title>
   
   
   
@@ -62,11 +62,9 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'oop';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'functions_intro_pandas';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Introduction to pandas" href="pandas_intro.html" />
-    <link rel="prev" title="Functions" href="functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -117,6 +115,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -170,7 +170,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="data-types.html">Intro to Python and Jupyter Notebooks</a></li>
 
 
@@ -178,7 +178,7 @@
 <li class="toctree-l1"><a class="reference internal" href="iteration.html">Iteration and Control Flow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises.html">Python Iteration and Control Flow Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Functions and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oop.html">Functions and Classes</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="pandas_intro.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_II.html">Reading Files and Split Apply Combine</a></li>
@@ -242,7 +242,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/jfkoehler/nyu_bootcamp_spr26/blob/main/oop.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/jfkoehler/nyu_bootcamp_spr26/blob/main/functions_intro_pandas.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -290,7 +290,7 @@
       
       
       
-      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_spr26/issues/new?title=Issue%20on%20page%20%2Foop.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_spr26/issues/new?title=Issue%20on%20page%20%2Ffunctions_intro_pandas.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -320,7 +320,7 @@
       
       
       
-      <li><a href="_sources/oop.ipynb" target="_blank"
+      <li><a href="_sources/functions_intro_pandas.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -396,7 +396,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Functions and Classes</h1>
+    <h1>Libraries and Other Peoples Objects</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -406,37 +406,21 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Functions and Classes</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-dna-to-rna">Challenge: DNA to RNA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-hamming-distance">Challenge: Hamming Distance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#args"><code class="docutils literal notranslate"><span class="pre">args</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unpacking-argument-lists">Unpacking Argument Lists</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Libraries and Other Peoples Objects</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-dataframe-from-scratch">Create <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from scratch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-dataframe-from-external-file">Create <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from external file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes-of-dataframe">Attributes of <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-on-dataframe">Methods on <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-data">Selecting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-data">Filtering Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-data">Sorting Data</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#object-oriented-programming-with-python">Object Oriented Programming with Python</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-basic-class">Example of Basic Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-an-account-class">Making an Account Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-methods-on-the-account">Defining Methods on the Account</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-variables">Class variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inheritence">Inheritence</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-and-other-peoples-objects">Libraries and Other Peoples Objects</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-dataframe-from-scratch">Create <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from scratch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-dataframe-from-external-file">Create <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from external file</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes-of-dataframe">Attributes of <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-on-dataframe">Methods on <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-data">Selecting Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-data">Filtering Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-data">Sorting Data</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decorators">Decorators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recursion">Recursion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-memoization">Use Case: Memoization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-str-and-repr-methods">The <code class="docutils literal notranslate"><span class="pre">__str__</span></code> and <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> methods</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#extras">Extras</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decorators">Decorators</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#recursion">Recursion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-memoization">Use Case: Memoization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-str-and-repr-methods">The <code class="docutils literal notranslate"><span class="pre">__str__</span></code> and <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> methods</a></li>
 </ul>
 
             </nav>
@@ -449,527 +433,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="functions-and-classes">
-<h1>Functions and Classes<a class="headerlink" href="#functions-and-classes" title="Link to this heading">#</a></h1>
-<section id="challenge-dna-to-rna">
-<h2>Challenge: DNA to RNA<a class="headerlink" href="#challenge-dna-to-rna" title="Link to this heading">#</a></h2>
-<hr class="docutils" />
-<p>If you’ve taken a Biology class, you know that DNA is essentially a long string comprised of 4 nucleotides:</p>
-<ul class="simple">
-<li><p>Cytosine (C)</p></li>
-<li><p>Thymine (T)</p></li>
-<li><p>Adenine (A)</p></li>
-<li><p>Guanine (G)</p></li>
-</ul>
-<p>Example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dna</span> <span class="o">=</span> <span class="s1">&#39;ACGTAAAACGTGGTGGATTTGACGTGTTTG&#39;</span>
-</pre></div>
-</div>
-<p>RNA is similar to DNA with one exception: all instances of Thymine (T) are replaced with Uracil (U). Our DNA from above would look like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rna</span> <span class="o">=</span> <span class="s1">&#39;ACGUAAAACGUGGUGGAUUUGACGUGUUUG&#39;</span>
-</pre></div>
-</div>
-<p>In the cell below, create a function called <code class="docutils literal notranslate"><span class="pre">dna_to_rna</span></code> that accepts a string of DNA and converts it to RNA.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dna</span> <span class="o">=</span> <span class="s1">&#39;ACGTAAAACGTGGTGGATTTGACGTGTTTG&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dna_to_rna</span><span class="p">():</span>
-    <span class="k">pass</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="challenge-hamming-distance">
-<h2>Challenge: Hamming Distance<a class="headerlink" href="#challenge-hamming-distance" title="Link to this heading">#</a></h2>
-<hr class="docutils" />
-<p>The DNA strand <code class="docutils literal notranslate"><span class="pre">'AAAA'</span></code> is similar to the strand <code class="docutils literal notranslate"><span class="pre">'AAAT'</span></code> with one exception: the 4th nucleotide is different. In other words, the two strands have a <strong>hamming distance</strong> of 1, where hamming distance is the number of nucleotides that differ between two strands.</p>
-<p>In the cell below, create a function called <code class="docutils literal notranslate"><span class="pre">hamming_distance</span></code> that accepts two parameters (<code class="docutils literal notranslate"><span class="pre">dna1</span></code> and <code class="docutils literal notranslate"><span class="pre">dna2</span></code>) and calculates the hamming distance between the two strands.</p>
-<p><strong>NOTE:</strong> You can assume the two strands will have the same length.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hamming_distance</span><span class="p">():</span>
-    <span class="k">pass</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dna1</span> <span class="o">=</span> <span class="s1">&#39;ACGTAAAACGTGGTGGATTTGACGTGTTTG&#39;</span>
-<span class="n">dna2</span> <span class="o">=</span> <span class="s1">&#39;ATGTAAACCTGGTGGATTTCACGTGTTTG&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hamming_distance</span><span class="p">(</span><span class="n">dna1</span><span class="p">,</span> <span class="n">dna2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hamming_distance</span><span class="p">(</span><span class="n">dna1</span><span class="p">,</span> <span class="n">dna2</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: hamming_distance() takes 0 positional arguments but 2 were given
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="args">
-<h2><code class="docutils literal notranslate"><span class="pre">args</span></code><a class="headerlink" href="#args" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">*args</span></code> is a parameter that allows any number of parameters to be passed to a function. The <code class="docutils literal notranslate"><span class="pre">*</span></code> at the beginning specifies the variable number of arguments.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#use *args to pass variable length arguments</span>
-<span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
-    <span class="n">product</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
-        <span class="n">product</span> <span class="o">=</span> <span class="n">product</span> <span class="o">*</span> <span class="n">num</span>
-    <span class="k">return</span> <span class="n">product</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="unpacking-argument-lists">
-<h3>Unpacking Argument Lists<a class="headerlink" href="#unpacking-argument-lists" title="Link to this heading">#</a></h3>
-<p>You may find a situation where you have a collection that you want to unpack into a list.  This is another situation where you can encounter the <code class="docutils literal notranslate"><span class="pre">*</span></code> operation.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>            <span class="c1"># normal call with separate arguments</span>
-
-<span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code></p>
-<p>Using <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> allows unpacking of variable length dictionary like arguments.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cheeseshop</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-- Do you have any&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="p">,</span> <span class="s2">&quot;?&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-- I&#39;m sorry, we&#39;re all out of&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">kw</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">kw</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">kw</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cheeseshop</span><span class="p">(</span><span class="s2">&quot;Limburger&quot;</span><span class="p">,</span>
-           <span class="n">shopkeeper</span><span class="o">=</span><span class="s2">&quot;Michael Palin&quot;</span><span class="p">,</span>
-           <span class="n">client</span><span class="o">=</span><span class="s2">&quot;John Cleese&quot;</span><span class="p">,</span>
-           <span class="n">sketch</span><span class="o">=</span><span class="s2">&quot;Cheese Shop Sketch&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cheeseshop</span><span class="p">(</span><span class="s2">&quot;Limburger&quot;</span><span class="p">,</span>
-           <span class="n">shopkeeper</span><span class="o">=</span><span class="s2">&quot;Michael Palin&quot;</span><span class="p">,</span>
-           <span class="n">client</span><span class="o">=</span><span class="s2">&quot;John Cleese&quot;</span><span class="p">,</span>
-           <span class="n">sketch</span><span class="o">=</span><span class="s2">&quot;Cheese Shop Sketch&quot;</span><span class="p">,</span>
-           <span class="n">year</span> <span class="o">=</span> <span class="mi">1979</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Similar to <code class="docutils literal notranslate"><span class="pre">*args</span></code> you can unpack dictionary items as variable keyword arguments.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;shopkeeper&#39;</span><span class="p">:</span><span class="s2">&quot;Michael Palin&quot;</span><span class="p">,</span>
-           <span class="s1">&#39;client&#39;</span><span class="p">:</span><span class="s2">&quot;John Cleese&quot;</span><span class="p">,</span>
-           <span class="s1">&#39;sketch&#39;</span><span class="p">:</span><span class="s2">&quot;Cheese Shop Sketch&quot;</span><span class="p">,</span>
-           <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1979</span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cheeseshop</span><span class="p">(</span><span class="s2">&quot;Limburger&quot;</span><span class="p">,</span>
-           <span class="o">**</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#putting *args and **kwargs together</span>
-<span class="c1">#note that args and kwargs are not mandatory names</span>
-<span class="k">def</span> <span class="nf">cheeseshop</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">,</span> <span class="o">**</span><span class="n">keywords</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-- Do you have any&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="p">,</span> <span class="s2">&quot;?&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-- I&#39;m sorry, we&#39;re all out of&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">arguments</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">kw</span> <span class="ow">in</span> <span class="n">keywords</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">kw</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">keywords</span><span class="p">[</span><span class="n">kw</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cheeseshop</span><span class="p">(</span><span class="s2">&quot;Limburger&quot;</span><span class="p">,</span> <span class="s2">&quot;It&#39;s very runny, sir.&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;It&#39;s really very, VERY runny, sir.&quot;</span><span class="p">,</span>
-           <span class="n">shopkeeper</span><span class="o">=</span><span class="s2">&quot;Michael Palin&quot;</span><span class="p">,</span>
-           <span class="n">client</span><span class="o">=</span><span class="s2">&quot;John Cleese&quot;</span><span class="p">,</span>
-           <span class="n">sketch</span><span class="o">=</span><span class="s2">&quot;Cheese Shop Sketch&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise</strong>:  Write a function, <code class="docutils literal notranslate"><span class="pre">sum_everything</span></code> that takes any numbers of arguments and adds them together.</p>
-</section>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="object-oriented-programming-with-python">
-<h1>Object Oriented Programming with Python<a class="headerlink" href="#object-oriented-programming-with-python" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3.12/tutorial/classes.html#">Docs</a></p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;Lenny&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Lenny&#39;</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="example-of-basic-class">
-<h2>Example of Basic Class<a class="headerlink" href="#example-of-basic-class" title="Link to this heading">#</a></h2>
-<p><img alt="" src="_images/class-sketch.png" /></p>
-<p>One finds similar hierarchical organization in biology with trees of life.</p>
-<p><img alt="" src="_images/tree_of_life.png" /></p>
-</section>
-<section id="making-an-account-class">
-<h2>Making an Account Class<a class="headerlink" href="#making-an-account-class" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Define class</p></li>
-<li><p>Create instance</p></li>
-<li><p>Assign attributes</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Account</span><span class="p">:</span>
-    <span class="k">pass</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lennys_account</span> <span class="o">=</span> <span class="n">Account</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">lennys_account</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jacobs_account</span> <span class="o">=</span> <span class="n">Account</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lennys_account</span><span class="o">.</span><span class="n">balance</span> <span class="o">=</span> <span class="mi">100</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lennys_account</span><span class="o">.</span><span class="n">balance</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jacobs_account</span><span class="o">.</span><span class="n">balance</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="defining-methods-on-the-account">
-<h2>Defining Methods on the Account<a class="headerlink" href="#defining-methods-on-the-account" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Define class methods</p></li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">__init__</span></code> as constructor in class</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Account</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">balance</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span>
-
-    <span class="k">def</span> <span class="nf">withdraw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">-=</span> <span class="n">amount</span>
-        
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lennys_account</span> <span class="o">=</span> <span class="n">Account</span><span class="p">(</span><span class="s1">&#39;Lenny&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lennys_account</span><span class="o">.</span><span class="n">balance</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lennys_account</span><span class="o">.</span><span class="n">withdraw</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lennys_account</span><span class="o">.</span><span class="n">balance</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hardys_account</span> <span class="o">=</span> <span class="n">Account</span><span class="p">(</span><span class="s1">&#39;Hardy&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hardys_account</span><span class="o">.</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="alert alert-info">
-    <strong>Constructor Method</strong>
-<p><code class="docutils literal notranslate"><span class="pre">__init__()</span></code>: a special type of method that gives access to the attributes of the class.</p>
- </div><p><strong>Exercise</strong>:</p>
-<p>We would like to avoid the</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">amount</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount</span> <span class="o">-</span> <span class="n">howmuch</span>
-</pre></div>
-</div>
-<p>sytax and instead refactor this method to increment the attribute inside the <code class="docutils literal notranslate"><span class="pre">withdraw</span></code> method.  Add two more methods to the class, <code class="docutils literal notranslate"><span class="pre">deposit</span></code> and <code class="docutils literal notranslate"><span class="pre">statement</span></code>.  The <code class="docutils literal notranslate"><span class="pre">deposit</span></code> method should allow to make deposits similar to the withdrawl, and the <code class="docutils literal notranslate"><span class="pre">statement</span></code> method should print who the owner is and what amount of money is in the account.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Account</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">balance</span><span class="p">):</span>
-        <span class="k">pass</span>
-        
-
-    <span class="k">def</span> <span class="nf">withdraw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
-        <span class="k">pass</span>
-
-    <span class="k">def</span> <span class="nf">deposit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
-        <span class="k">pass</span>
-
-    <span class="k">def</span> <span class="nf">statement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lennys_account</span> <span class="o">=</span> <span class="n">Account</span><span class="p">(</span><span class="s1">&#39;Lenny&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lennys_account</span><span class="o">.</span><span class="n">statement</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lennys_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lennys_account</span><span class="o">.</span><span class="n">statement</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="class-variables">
-<h2>Class variables<a class="headerlink" href="#class-variables" title="Link to this heading">#</a></h2>
-<p>It is important to understand the consequence of using general variables rather than attaching the variable to each instance of a class.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
-
-    <span class="n">tricks</span> <span class="o">=</span> <span class="p">[]</span>             <span class="c1"># mistaken use of a class variable</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-
-    <span class="k">def</span> <span class="nf">add_trick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trick</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tricks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trick</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s1">&#39;Fido&#39;</span><span class="p">)</span>
-<span class="n">e</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s1">&#39;Buddy&#39;</span><span class="p">)</span>
-<span class="n">d</span><span class="o">.</span><span class="n">add_trick</span><span class="p">(</span><span class="s1">&#39;roll over&#39;</span><span class="p">)</span>
-<span class="n">e</span><span class="o">.</span><span class="n">add_trick</span><span class="p">(</span><span class="s1">&#39;play dead&#39;</span><span class="p">)</span>
-<span class="n">d</span><span class="o">.</span><span class="n">tricks</span> 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tricks</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># creates a new empty list for each dog</span>
-
-    <span class="k">def</span> <span class="nf">add_trick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trick</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tricks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trick</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s1">&#39;Fido&#39;</span><span class="p">)</span>
-<span class="n">e</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s1">&#39;Buddy&#39;</span><span class="p">)</span>
-<span class="n">d</span><span class="o">.</span><span class="n">add_trick</span><span class="p">(</span><span class="s1">&#39;roll over&#39;</span><span class="p">)</span>
-<span class="n">e</span><span class="o">.</span><span class="n">add_trick</span><span class="p">(</span><span class="s1">&#39;play dead&#39;</span><span class="p">)</span>
-<span class="n">d</span><span class="o">.</span><span class="n">tricks</span> 
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="inheritence">
-<h2>Inheritence<a class="headerlink" href="#inheritence" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Create class that inherits from parent class</p></li>
-<li><p>Override methods of parent class</p></li>
-</ul>
-<p><img alt="" src="_images/inherit.png" /></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SavingsAccount</span><span class="p">(</span><span class="n">Account</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">balance</span><span class="p">,</span> <span class="n">rate</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">,</span> <span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">=</span> <span class="n">rate</span>
-
-    <span class="k">def</span> <span class="nf">add_interest</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">*=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lennys_account</span> <span class="o">=</span> <span class="n">SavingsAccount</span><span class="p">(</span><span class="s1">&#39;Lenny&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">.07</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lennys_account</span><span class="o">.</span><span class="n">balance</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="libraries-and-other-peoples-objects">
-<h2>Libraries and Other Peoples Objects<a class="headerlink" href="#libraries-and-other-peoples-objects" title="Link to this heading">#</a></h2>
+  <section id="libraries-and-other-peoples-objects">
+<h1>Libraries and Other Peoples Objects<a class="headerlink" href="#libraries-and-other-peoples-objects" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code>: Documentation <a class="reference external" href="https://pandas.pydata.org/">here</a></p></li>
 <li><p>cheatsheet: <a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">here</a></p></li>
@@ -1033,7 +498,7 @@
 </div></div></div>
 </div>
 <section id="create-dataframe-from-scratch">
-<h3>Create <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from scratch<a class="headerlink" href="#create-dataframe-from-scratch" title="Link to this heading">#</a></h3>
+<h2>Create <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from scratch<a class="headerlink" href="#create-dataframe-from-scratch" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Lenny&#39;</span><span class="p">,</span> <span class="s1">&#39;Axel&#39;</span><span class="p">,</span> <span class="s1">&#39;Fu fu&#39;</span><span class="p">],</span>
@@ -1094,7 +559,7 @@
 </div>
 </section>
 <section id="create-dataframe-from-external-file">
-<h3>Create <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from external file<a class="headerlink" href="#create-dataframe-from-external-file" title="Link to this heading">#</a></h3>
+<h2>Create <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from external file<a class="headerlink" href="#create-dataframe-from-external-file" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/justmarkham/DAT8/refs/heads/master/data/drinks.csv&#39;</span>
@@ -1137,7 +602,7 @@
 </div>
 </section>
 <section id="attributes-of-dataframe">
-<h3>Attributes of <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code><a class="headerlink" href="#attributes-of-dataframe" title="Link to this heading">#</a></h3>
+<h2>Attributes of <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code><a class="headerlink" href="#attributes-of-dataframe" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#shape</span>
@@ -1161,7 +626,7 @@
 </div>
 </section>
 <section id="methods-on-dataframe">
-<h3>Methods on <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code><a class="headerlink" href="#methods-on-dataframe" title="Link to this heading">#</a></h3>
+<h2>Methods on <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code><a class="headerlink" href="#methods-on-dataframe" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#first five rows</span>
@@ -1289,7 +754,7 @@
 </div>
 </section>
 <section id="selecting-data">
-<h3>Selecting Data<a class="headerlink" href="#selecting-data" title="Link to this heading">#</a></h3>
+<h2>Selecting Data<a class="headerlink" href="#selecting-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#select a column</span>
@@ -1320,7 +785,7 @@
 </div>
 </section>
 <section id="filtering-data">
-<h3>Filtering Data<a class="headerlink" href="#filtering-data" title="Link to this heading">#</a></h3>
+<h2>Filtering Data<a class="headerlink" href="#filtering-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#countries who have more than 100 servings of beer</span>
@@ -1351,7 +816,7 @@
 </div>
 </section>
 <section id="sorting-data">
-<h3>Sorting Data<a class="headerlink" href="#sorting-data" title="Link to this heading">#</a></h3>
+<h2>Sorting Data<a class="headerlink" href="#sorting-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#sort values by a columns values</span>
@@ -1382,8 +847,11 @@
 </div>
 </section>
 </section>
+<section id="extras">
+<h1>Extras<a class="headerlink" href="#extras" title="Link to this heading">#</a></h1>
+</section>
 <section id="decorators">
-<h2>Decorators<a class="headerlink" href="#decorators" title="Link to this heading">#</a></h2>
+<h1>Decorators<a class="headerlink" href="#decorators" title="Link to this heading">#</a></h1>
 <p>A decorator wraps a function and adds functionality to a function based on the decorator function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1411,6 +879,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Howdy!
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1424,6 +897,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">howdy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before function call
+Howdy!
+After function call
 </pre></div>
 </div>
 </div>
@@ -1445,10 +925,47 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fib</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">41</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">fib</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="nn">Cell In[39], line 5,</span> in <span class="ni">fib</span><span class="nt">(n)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="k">return</span> <span class="n">n</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nn">Cell In[39], line 5,</span> in <span class="ni">fib</span><span class="nt">(n)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="k">return</span> <span class="n">n</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="p">[</span><span class="o">...</span> <span class="n">skipping</span> <span class="n">similar</span> <span class="n">frames</span><span class="p">:</span> <span class="n">fib</span> <span class="n">at</span> <span class="n">line</span> <span class="mi">5</span> <span class="p">(</span><span class="mi">81</span> <span class="n">times</span><span class="p">)]</span>
+
+<span class="nn">Cell In[39], line 5,</span> in <span class="ni">fib</span><span class="nt">(n)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="k">return</span> <span class="n">n</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nn">Cell In[39], line 1,</span> in <span class="ni">fib</span><span class="nt">(n)</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="k">return</span> <span class="n">n</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -1458,7 +975,7 @@
 <p>Here, you can think of it as taking the first card from the deck and giving the rest of the deck to someone else to add them.  This person continues this pattern, taking the first card and passing the remaining deck elsewhere.</p>
 </section>
 <section id="recursion">
-<h2>Recursion<a class="headerlink" href="#recursion" title="Link to this heading">#</a></h2>
+<h1>Recursion<a class="headerlink" href="#recursion" title="Link to this heading">#</a></h1>
 <p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Sierpinski_triangle.svg/440px-Sierpinski_triangle.svg.png" /></p>
 <p>A concept <span class="math notranslate nohighlight">\(x\)</span> is recursive if it is used in its own definition.</p>
 <div class="cell docutils container">
@@ -1515,7 +1032,7 @@
 </div>
 </section>
 <section id="use-case-memoization">
-<h2>Use Case: Memoization<a class="headerlink" href="#use-case-memoization" title="Link to this heading">#</a></h2>
+<h1>Use Case: Memoization<a class="headerlink" href="#use-case-memoization" title="Link to this heading">#</a></h1>
 <p>In mathematics, the Fibonacci numbers, commonly denoted Fn, form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is</p>
 <div class="math notranslate nohighlight">
 \[\displaystyle F_{0}=0,\quad F_{1}=1\]</div>
@@ -1605,7 +1122,7 @@
 </ul>
 </section>
 <section id="the-str-and-repr-methods">
-<h2>The <code class="docutils literal notranslate"><span class="pre">__str__</span></code> and <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> methods<a class="headerlink" href="#the-str-and-repr-methods" title="Link to this heading">#</a></h2>
+<h1>The <code class="docutils literal notranslate"><span class="pre">__str__</span></code> and <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> methods<a class="headerlink" href="#the-str-and-repr-methods" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Define string representations of class</p></li>
 </ul>
@@ -1695,7 +1212,6 @@
 </div>
 </div>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1727,24 +1243,6 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="functions.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Functions</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="pandas_intro.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -1762,37 +1260,21 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Functions and Classes</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-dna-to-rna">Challenge: DNA to RNA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-hamming-distance">Challenge: Hamming Distance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#args"><code class="docutils literal notranslate"><span class="pre">args</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unpacking-argument-lists">Unpacking Argument Lists</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Libraries and Other Peoples Objects</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-dataframe-from-scratch">Create <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from scratch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-dataframe-from-external-file">Create <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from external file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes-of-dataframe">Attributes of <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-on-dataframe">Methods on <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-data">Selecting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-data">Filtering Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-data">Sorting Data</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#object-oriented-programming-with-python">Object Oriented Programming with Python</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-basic-class">Example of Basic Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-an-account-class">Making an Account Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-methods-on-the-account">Defining Methods on the Account</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-variables">Class variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inheritence">Inheritence</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-and-other-peoples-objects">Libraries and Other Peoples Objects</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-dataframe-from-scratch">Create <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from scratch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-dataframe-from-external-file">Create <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from external file</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes-of-dataframe">Attributes of <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-on-dataframe">Methods on <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-data">Selecting Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-data">Filtering Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-data">Sorting Data</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decorators">Decorators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recursion">Recursion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-memoization">Use Case: Memoization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-str-and-repr-methods">The <code class="docutils literal notranslate"><span class="pre">__str__</span></code> and <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> methods</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#extras">Extras</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decorators">Decorators</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#recursion">Recursion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-memoization">Use Case: Memoization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-str-and-repr-methods">The <code class="docutils literal notranslate"><span class="pre">__str__</span></code> and <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> methods</a></li>
 </ul>
 
   </nav></div>

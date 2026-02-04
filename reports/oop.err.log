@@ -22,8 +22,8 @@ hamming_distance(dna1, dna2)
 ------------------
 
 
-[0;31m-------------------------------------------------------------[0m
-[0;31mTypeError[0m                   Traceback (most recent call last)
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
 Cell [0;32mIn[5], line 1[0m
 [0;32m----> 1[0m [43mhamming_distance[49m[43m([49m[43mdna1[49m[43m,[49m[43m [49m[43mdna2[49m[43m)[49m
 
