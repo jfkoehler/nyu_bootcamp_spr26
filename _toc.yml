@@ -11,4 +11,6 @@ chapters:
 - file: oop
 - file: pandas_intro
 - file: pandas_II
+- file: plotting_seaborn
+- file: pandas_and_data
 - file: extra_resources

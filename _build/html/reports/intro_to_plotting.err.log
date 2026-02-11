@@ -1,0 +1,127 @@
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 664, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+### boxplot of tip percentage
+plt.boxplot(tips['tip_pct']);
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[37], line 2[0m
+[1;32m      1[0m [38;5;66;03m### boxplot of tip percentage[39;00m
+[0;32m----> 2[0m [43mplt[49m[38;5;241;43m.[39;49m[43mboxplot[49m[43m([49m[43mtips[49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43mtip_pct[39;49m[38;5;124;43m'[39;49m[43m][49m[43m)[49m;
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/matplotlib/_api/deprecation.py:300[0m, in [0;36mrename_parameter.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    295[0m     warn_deprecated(
+[1;32m    296[0m         since, message[38;5;241m=[39m[38;5;124mf[39m[38;5;124m"[39m[38;5;124mThe [39m[38;5;132;01m{[39;00mold[38;5;132;01m!r}[39;00m[38;5;124m parameter of [39m[38;5;132;01m{[39;00mfunc[38;5;241m.[39m[38;5;18m__name__[39m[38;5;132;01m}[39;00m[38;5;124m() [39m[38;5;124m"[39m
+[1;32m    297[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mhas been renamed [39m[38;5;132;01m{[39;00mnew[38;5;132;01m!r}[39;00m[38;5;124m since Matplotlib [39m[38;5;132;01m{[39;00msince[38;5;132;01m}[39;00m[38;5;124m; support [39m[38;5;124m"[39m
+[1;32m    298[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mfor the old name will be dropped %(removal)s.[39m[38;5;124m"[39m)
+[1;32m    299[0m     kwargs[new] [38;5;241m=[39m kwargs[38;5;241m.[39mpop(old)
+[0;32m--> 300[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/matplotlib/pyplot.py:3051[0m, in [0;36mboxplot[0;34m(x, notch, sym, vert, whis, positions, widths, patch_artist, bootstrap, usermedians, conf_intervals, meanline, showmeans, showcaps, showbox, showfliers, boxprops, tick_labels, flierprops, medianprops, meanprops, capprops, whiskerprops, manage_ticks, autorange, zorder, capwidths, label, data)[0m
+[1;32m   3018[0m [38;5;129m@_copy_docstring_and_deprecators[39m(Axes[38;5;241m.[39mboxplot)
+[1;32m   3019[0m [38;5;28;01mdef[39;00m [38;5;21mboxplot[39m(
+[1;32m   3020[0m     x: ArrayLike [38;5;241m|[39m Sequence[ArrayLike],
+[0;32m   (...)[0m
+[1;32m   3049[0m     data[38;5;241m=[39m[38;5;28;01mNone[39;00m,
+[1;32m   3050[0m ) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mdict[39m[[38;5;28mstr[39m, Any]:
+[0;32m-> 3051[0m     [38;5;28;01mreturn[39;00m [43mgca[49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43mboxplot[49m[43m([49m
+[1;32m   3052[0m [43m        [49m[43mx[49m[43m,[49m
+[1;32m   3053[0m [43m        [49m[43mnotch[49m[38;5;241;43m=[39;49m[43mnotch[49m[43m,[49m
+[1;32m   3054[0m [43m        [49m[43msym[49m[38;5;241;43m=[39;49m[43msym[49m[43m,[49m
+[1;32m   3055[0m [43m        [49m[43mvert[49m[38;5;241;43m=[39;49m[43mvert[49m[43m,[49m
+[1;32m   3056[0m [43m        [49m[43mwhis[49m[38;5;241;43m=[39;49m[43mwhis[49m[43m,[49m
+[1;32m   3057[0m [43m        [49m[43mpositions[49m[38;5;241;43m=[39;49m[43mpositions[49m[43m,[49m
+[1;32m   3058[0m [43m        [49m[43mwidths[49m[38;5;241;43m=[39;49m[43mwidths[49m[43m,[49m
+[1;32m   3059[0m [43m        [49m[43mpatch_artist[49m[38;5;241;43m=[39;49m[43mpatch_artist[49m[43m,[49m
+[1;32m   3060[0m [43m        [49m[43mbootstrap[49m[38;5;241;43m=[39;49m[43mbootstrap[49m[43m,[49m
+[1;32m   3061[0m [43m        [49m[43musermedians[49m[38;5;241;43m=[39;49m[43musermedians[49m[43m,[49m
+[1;32m   3062[0m [43m        [49m[43mconf_intervals[49m[38;5;241;43m=[39;49m[43mconf_intervals[49m[43m,[49m
+[1;32m   3063[0m [43m        [49m[43mmeanline[49m[38;5;241;43m=[39;49m[43mmeanline[49m[43m,[49m
+[1;32m   3064[0m [43m        [49m[43mshowmeans[49m[38;5;241;43m=[39;49m[43mshowmeans[49m[43m,[49m
+[1;32m   3065[0m [43m        [49m[43mshowcaps[49m[38;5;241;43m=[39;49m[43mshowcaps[49m[43m,[49m
+[1;32m   3066[0m [43m        [49m[43mshowbox[49m[38;5;241;43m=[39;49m[43mshowbox[49m[43m,[49m
+[1;32m   3067[0m [43m        [49m[43mshowfliers[49m[38;5;241;43m=[39;49m[43mshowfliers[49m[43m,[49m
+[1;32m   3068[0m [43m        [49m[43mboxprops[49m[38;5;241;43m=[39;49m[43mboxprops[49m[43m,[49m
+[1;32m   3069[0m [43m        [49m[43mtick_labels[49m[38;5;241;43m=[39;49m[43mtick_labels[49m[43m,[49m
+[1;32m   3070[0m [43m        [49m[43mflierprops[49m[38;5;241;43m=[39;49m[43mflierprops[49m[43m,[49m
+[1;32m   3071[0m [43m        [49m[43mmedianprops[49m[38;5;241;43m=[39;49m[43mmedianprops[49m[43m,[49m
+[1;32m   3072[0m [43m        [49m[43mmeanprops[49m[38;5;241;43m=[39;49m[43mmeanprops[49m[43m,[49m
+[1;32m   3073[0m [43m        [49m[43mcapprops[49m[38;5;241;43m=[39;49m[43mcapprops[49m[43m,[49m
+[1;32m   3074[0m [43m        [49m[43mwhiskerprops[49m[38;5;241;43m=[39;49m[43mwhiskerprops[49m[43m,[49m
+[1;32m   3075[0m [43m        [49m[43mmanage_ticks[49m[38;5;241;43m=[39;49m[43mmanage_ticks[49m[43m,[49m
+[1;32m   3076[0m [43m        [49m[43mautorange[49m[38;5;241;43m=[39;49m[43mautorange[49m[43m,[49m
+[1;32m   3077[0m [43m        [49m[43mzorder[49m[38;5;241;43m=[39;49m[43mzorder[49m[43m,[49m
+[1;32m   3078[0m [43m        [49m[43mcapwidths[49m[38;5;241;43m=[39;49m[43mcapwidths[49m[43m,[49m
+[1;32m   3079[0m [43m        [49m[43mlabel[49m[38;5;241;43m=[39;49m[43mlabel[49m[43m,[49m
+[1;32m   3080[0m [43m        [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43m([49m[43m{[49m[38;5;124;43m"[39;49m[38;5;124;43mdata[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mdata[49m[43m}[49m[43m [49m[38;5;28;43;01mif[39;49;00m[43m [49m[43mdata[49m[43m [49m[38;5;129;43;01mis[39;49;00m[43m [49m[38;5;129;43;01mnot[39;49;00m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m [49m[38;5;28;43;01melse[39;49;00m[43m [49m[43m{[49m[43m}[49m[43m)[49m[43m,[49m
+[1;32m   3081[0m [43m    [49m[43m)[49m
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/matplotlib/__init__.py:1473[0m, in [0;36m_preprocess_data.<locals>.inner[0;34m(ax, data, *args, **kwargs)[0m
+[1;32m   1470[0m [38;5;129m@functools[39m[38;5;241m.[39mwraps(func)
+[1;32m   1471[0m [38;5;28;01mdef[39;00m [38;5;21minner[39m(ax, [38;5;241m*[39margs, data[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[1;32m   1472[0m     [38;5;28;01mif[39;00m data [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m-> 1473[0m         [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m
+[1;32m   1474[0m [43m            [49m[43max[49m[43m,[49m
+[1;32m   1475[0m [43m            [49m[38;5;241;43m*[39;49m[38;5;28;43mmap[39;49m[43m([49m[43msanitize_sequence[49m[43m,[49m[43m [49m[43margs[49m[43m)[49m[43m,[49m
+[1;32m   1476[0m [43m            [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43m{[49m[43mk[49m[43m:[49m[43m [49m[43msanitize_sequence[49m[43m([49m[43mv[49m[43m)[49m[43m [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43mk[49m[43m,[49m[43m [49m[43mv[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43mkwargs[49m[38;5;241;43m.[39;49m[43mitems[49m[43m([49m[43m)[49m[43m}[49m[43m)[49m
+[1;32m   1478[0m     bound [38;5;241m=[39m new_sig[38;5;241m.[39mbind(ax, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[1;32m   1479[0m     auto_label [38;5;241m=[39m (bound[38;5;241m.[39marguments[38;5;241m.[39mget(label_namer)
+[1;32m   1480[0m                   [38;5;129;01mor[39;00m bound[38;5;241m.[39mkwargs[38;5;241m.[39mget(label_namer))
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/matplotlib/_api/deprecation.py:300[0m, in [0;36mrename_parameter.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    295[0m     warn_deprecated(
+[1;32m    296[0m         since, message[38;5;241m=[39m[38;5;124mf[39m[38;5;124m"[39m[38;5;124mThe [39m[38;5;132;01m{[39;00mold[38;5;132;01m!r}[39;00m[38;5;124m parameter of [39m[38;5;132;01m{[39;00mfunc[38;5;241m.[39m[38;5;18m__name__[39m[38;5;132;01m}[39;00m[38;5;124m() [39m[38;5;124m"[39m
+[1;32m    297[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mhas been renamed [39m[38;5;132;01m{[39;00mnew[38;5;132;01m!r}[39;00m[38;5;124m since Matplotlib [39m[38;5;132;01m{[39;00msince[38;5;132;01m}[39;00m[38;5;124m; support [39m[38;5;124m"[39m
+[1;32m    298[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mfor the old name will be dropped %(removal)s.[39m[38;5;124m"[39m)
+[1;32m    299[0m     kwargs[new] [38;5;241m=[39m kwargs[38;5;241m.[39mpop(old)
+[0;32m--> 300[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/matplotlib/axes/_axes.py:4039[0m, in [0;36mAxes.boxplot[0;34m(self, x, notch, sym, vert, whis, positions, widths, patch_artist, bootstrap, usermedians, conf_intervals, meanline, showmeans, showcaps, showbox, showfliers, boxprops, tick_labels, flierprops, medianprops, meanprops, capprops, whiskerprops, manage_ticks, autorange, zorder, capwidths, label)[0m
+[1;32m   4036[0m [38;5;28;01mif[39;00m bootstrap [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   4037[0m     bootstrap [38;5;241m=[39m mpl[38;5;241m.[39mrcParams[[38;5;124m'[39m[38;5;124mboxplot.bootstrap[39m[38;5;124m'[39m]
+[0;32m-> 4039[0m bxpstats [38;5;241m=[39m [43mcbook[49m[38;5;241;43m.[39;49m[43mboxplot_stats[49m[43m([49m[43mx[49m[43m,[49m[43m [49m[43mwhis[49m[38;5;241;43m=[39;49m[43mwhis[49m[43m,[49m[43m [49m[43mbootstrap[49m[38;5;241;43m=[39;49m[43mbootstrap[49m[43m,[49m
+[1;32m   4040[0m [43m                               [49m[43mlabels[49m[38;5;241;43m=[39;49m[43mtick_labels[49m[43m,[49m[43m [49m[43mautorange[49m[38;5;241;43m=[39;49m[43mautorange[49m[43m)[49m
+[1;32m   4041[0m [38;5;28;01mif[39;00m notch [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   4042[0m     notch [38;5;241m=[39m mpl[38;5;241m.[39mrcParams[[38;5;124m'[39m[38;5;124mboxplot.notch[39m[38;5;124m'[39m]
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/matplotlib/cbook.py:1295[0m, in [0;36mboxplot_stats[0;34m(X, whis, bootstrap, labels, autorange)[0m
+[1;32m   1292[0m x [38;5;241m=[39m x[38;5;241m.[39mdata[[38;5;241m~[39mx[38;5;241m.[39mmask][38;5;241m.[39mravel()
+[1;32m   1294[0m [38;5;66;03m# arithmetic mean[39;00m
+[0;32m-> 1295[0m stats[[38;5;124m'[39m[38;5;124mmean[39m[38;5;124m'[39m] [38;5;241m=[39m [43mnp[49m[38;5;241;43m.[39;49m[43mmean[49m[43m([49m[43mx[49m[43m)[49m
+[1;32m   1297[0m [38;5;66;03m# medians and quartiles[39;00m
+[1;32m   1298[0m q1, med, q3 [38;5;241m=[39m np[38;5;241m.[39mpercentile(x, [[38;5;241m25[39m, [38;5;241m50[39m, [38;5;241m75[39m])
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/numpy/core/fromnumeric.py:3504[0m, in [0;36mmean[0;34m(a, axis, dtype, out, keepdims, where)[0m
+[1;32m   3501[0m     [38;5;28;01melse[39;00m:
+[1;32m   3502[0m         [38;5;28;01mreturn[39;00m mean(axis[38;5;241m=[39maxis, dtype[38;5;241m=[39mdtype, out[38;5;241m=[39mout, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[0;32m-> 3504[0m [38;5;28;01mreturn[39;00m [43m_methods[49m[38;5;241;43m.[39;49m[43m_mean[49m[43m([49m[43ma[49m[43m,[49m[43m [49m[43maxis[49m[38;5;241;43m=[39;49m[43maxis[49m[43m,[49m[43m [49m[43mdtype[49m[38;5;241;43m=[39;49m[43mdtype[49m[43m,[49m
+[1;32m   3505[0m [43m                      [49m[43mout[49m[38;5;241;43m=[39;49m[43mout[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/numpy/core/_methods.py:131[0m, in [0;36m_mean[0;34m(a, axis, dtype, out, keepdims, where)[0m
+[1;32m    129[0m         ret [38;5;241m=[39m ret[38;5;241m.[39mdtype[38;5;241m.[39mtype(ret [38;5;241m/[39m rcount)
+[1;32m    130[0m [38;5;28;01melse[39;00m:
+[0;32m--> 131[0m     ret [38;5;241m=[39m [43mret[49m[43m [49m[38;5;241;43m/[39;49m[43m [49m[43mrcount[49m
+[1;32m    133[0m [38;5;28;01mreturn[39;00m ret
+
+[0;31mTypeError[0m: ufunc 'divide' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
