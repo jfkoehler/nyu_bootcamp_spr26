@@ -12,5 +12,6 @@ chapters:
 - file: pandas_intro
 - file: pandas_II
 - file: plotting_seaborn
-- file: pandas_and_data
+- file: plotting_activity
+- file: EDA_activity
 - file: extra_resources
