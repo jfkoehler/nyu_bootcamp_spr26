@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Data Bootcamp &#8212; Data Bootcamp</title>
+    <title>Pandas and Plotting Practice &#8212; Data Bootcamp</title>
   
   
   
@@ -60,12 +60,9 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'syllabus';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pandas_practice';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Intro to Python and Jupyter Notebooks" href="data-types.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -138,7 +135,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="syllabus.html">
   
   
   
@@ -165,8 +162,8 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="syllabus.html">
                     Data Bootcamp
                 </a>
             </li>
@@ -252,7 +249,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/jfkoehler/nyu_bootcamp_spr26/blob/main/syllabus.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/jfkoehler/nyu_bootcamp_spr26/blob/main/pandas_practice.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -300,7 +297,7 @@
       
       
       
-      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_spr26/issues/new?title=Issue%20on%20page%20%2Fsyllabus.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_spr26/issues/new?title=Issue%20on%20page%20%2Fpandas_practice.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -330,7 +327,7 @@
       
       
       
-      <li><a href="_sources/syllabus.ipynb" target="_blank"
+      <li><a href="_sources/pandas_practice.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -406,7 +403,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data Bootcamp</h1>
+    <h1>Pandas and Plotting Practice</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -416,18 +413,27 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Bootcamp</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor">Instructor</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teaching-assistant">Teaching Assistant</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help">Getting help</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-content">Course Content</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deliverables-and-grades">Deliverables and grades</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-work-habits">Recommended work habits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#policies">Policies</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pandas and Plotting Practice</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-import-the-libraries">Problem 1: Import the libraries</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#course-outline">Course Outline</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">Pandas</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-make-a-dataframe-from-dict">Problem 2: Make a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from <code class="docutils literal notranslate"><span class="pre">dict</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-columns-of-a-dataframe">Problem 3: Columns of a DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-basic-information">Problem 4: Basic Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-second-dataset">A Second Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-numerical-summaries">Problem 5: Numerical Summaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-6-categorical-summaries">Problem 6: Categorical Summaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-7-shape-of-the-data">Problem 7: Shape of the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-8-summaries">Problem 8: Summaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-9-summaries-by-sex">Problem 9: Summaries by sex</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-10-young-people-in-first-class">Problem 10: Young people in first class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-11-older-people-embarked">Problem 11: Older people embarked</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-12-survival-rate">Problem 12: Survival Rate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-13-renaming-columns">Problem 13: Renaming Columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-14-dropping-columns">Problem 14: Dropping Columns</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -442,167 +448,98 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="data-bootcamp">
-<h1>Data Bootcamp<a class="headerlink" href="#data-bootcamp" title="Link to this heading">#</a></h1>
-<p>Data Bootcamp is about nuts and bolts data analysis. You will learn how to analyze economic and business data and enough about computer programming to work with it efficiently.
-We will use Python, a popular high-level computer language that is widely used in finance, consulting, technology, and other parts of the business world. “High-level” means it is less painful than most (the hard work is being done by the language), but it is a serious language with extensive capabilities.</p>
-<p>“Data analysis” means descriptions that summarize data in ways that are helpful and informative. “Bootcamp” is a reminder that expertise takes work. Don’t worry, it’s worth it. You will be more valuable to current and future employers. And you will be able to do things more effectively than friends who rely on Excel.</p>
-<section id="instructor">
-<h2>Instructor<a class="headerlink" href="#instructor" title="Link to this heading">#</a></h2>
-<p>Jacob Frias Koehler</p>
-<ul class="simple">
-<li><p>Email: <a class="reference external" href="mailto:jfk11&#37;&#52;&#48;nyu&#46;edu">jfk11<span>&#64;</span>nyu<span>&#46;</span>edu</a></p></li>
-</ul>
-<p>Office Hours: Tuesdays on Zoom Time tbd</p>
-<p>Slack Channel: <a class="reference external" href="https://join.slack.com/t/problems-org/shared_invite/zt-3odpvvghs-fFzbIWpnbkhwGruIFIGbOA">here</a></p>
-</section>
-<section id="teaching-assistant">
-<h2>Teaching Assistant<a class="headerlink" href="#teaching-assistant" title="Link to this heading">#</a></h2>
-<p>TBD – Office Hours Fridays!</p>
-</section>
-<section id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
-<p>There are no prerequisites. We welcome students with no prior programming experience and have designed the course with them in mind. What you need is the courage to take on a challenge and the patience to fix computer programs that don’t work. That’s a regular occurrence, even for experts.</p>
-</section>
-<section id="getting-help">
-<h2>Getting help<a class="headerlink" href="#getting-help" title="Link to this heading">#</a></h2>
-<p>This course has a strong support system to help you when you run into a problem – and anyone who codes runs into programs runs into problems. We have myself and a teaching fellow.</p>
-<p>You can also ask your classmates for help! You can post questions on our discussion group (on SLACK). The teaching fellow and I will monitor the discussion group.</p>
-<p>The bottom line: If you’re stuck, ask for help.</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://join.slack.com/t/problems-org/shared_invite/zt-3odpvvghs-fFzbIWpnbkhwGruIFIGbOA">SLACK</a></p></li>
-</ul>
-</section>
-<section id="course-content">
-<h2>Course Content<a class="headerlink" href="#course-content" title="Link to this heading">#</a></h2>
-<p>I will continue building out our course book as we go and this will be our primary resource.  I will also assign selected readings in Brightspace.</p>
-</section>
-<section id="deliverables-and-grades">
-<h2>Deliverables and grades<a class="headerlink" href="#deliverables-and-grades" title="Link to this heading">#</a></h2>
-<p>This course divides naturally into two parts. The first part is an introduction to those aspects of the Python programming language useful for data analysis. We cover this material with as many applications to real data as we can think of. The second part covers advanced topics and ends with a project of your own. The goal is for you to have a piece of work you can show potential employers to illustrate your quantitative skill set. Both parts include a number of graded deliverables. The idea is to do some work all the time rather than lots of work once in a while.</p>
-<p>Graded work includes:</p>
-<ul class="simple">
-<li><p>Code Practice: There are weekly assignments over the course of the semester. They are a great way to develop your skills and come to the following class with questions about what you may not yet understand.</p></li>
-<li><p>Midterm Project. Midway through the semester, you will be asked to derive unique insight from a dataset that will be delivered to you and visualize that.</p></li>
-<li><p>Final Project: We work our way up to the project one step at a time, starting with idea generation and ending with a professional piece of data collection and analysis that you can share with potential employers. We have found that the quality of final project had a surprisingly low correlation to previous programming experience. A little thought and effort go a long way in creating an interesting project.</p></li>
-</ul>
-<p>Due dates are posted on the course website.</p>
-<p>Dates are not negotiable. Anything handed in late will get a grade of zero.</p>
-<p>All your work should be clean and professional. Your grade depends on it.</p>
-<p>Final grades will be computed from</p>
-<ul class="simple">
-<li><p>Homework: Code practice		40%</p></li>
-<li><p>Midterm project		15%</p></li>
-<li><p>Final Project		15%</p></li>
-<li><p>Quizzes/In Class Activities. 10%</p></li>
-<li><p>Participation/Attendance		20%</p></li>
-</ul>
-<p>Final grades are subject to the larger Stern grading expectations. The number of A grades, for example, will depend on both your relative and absolute performance, and you should expect 25 - 30% of the class to earn an A. If you make a good-faith effort, we expect it to be hard to get less than a B. We are the sole judges of what constitutes good-faith effort.</p>
-</section>
-<section id="recommended-work-habits">
-<h2>Recommended work habits<a class="headerlink" href="#recommended-work-habits" title="Link to this heading">#</a></h2>
-<p>Python is not something you can learn from reading a book and attending lectures. You need to write programs – the more the better – to understand how they work. Think about how you’d learn to play basketball or soccer; reading and listening to lectures aren’t enough, you need to do it. We’ll do a lot of programming in class, but it’s essential that you follow up outside of class.
-Here’s how.</p>
-<p>Write &amp; Review. After each topic, we recommend you:</p>
-<ul class="simple">
-<li><p>Write: Shortly after class, write down everything you remember without looking at your notes or the book. Note things you don’t understand.</p></li>
-<li><p>Review: Read the relevant section of the book. Fill in the gaps. Ask for help with anything you still don’t understand.</p></li>
-<li><p>Practice. For the first half of the term, each topic has an assignment that covers the same material. We suggest you do them, even the ones that aren’t graded.</p></li>
-</ul>
-<p>We also recommend you practice coding whenever you have the chance. Start small. Write short programs to do anything that crosses your mind. Use Python to do things you would ordinarily do in Excel. Try doing assignments from other courses in Python. At first this will be more work than doing it by hand or in Excel, but once you have some experience it will typically be easier in Python. Even if that’s not the case, the practice will expand your skill set.</p>
-</section>
-<section id="policies">
-<h2>Policies<a class="headerlink" href="#policies" title="Link to this heading">#</a></h2>
-<p>Ethics, disabilities, and many other things are governed by NYU and Stern policies. If you have questions about them, please ask.
-On graded work: You may discuss assignments with anyone (in fact, we encourage it), but anything you submit, including your code, should be your own. Exams should be entirely your own work.
-On disabilities: If you have a qualified disability that requires academic accommodation, please contact the Moses Center for Students with Disabilities (CSD, 212-998-4980) and ask them to send us a letter verifying your registration and outlining the accommodation they recommend. If you need to take an exam at the CSD, you must submit a completed Exam Accommodations Form to them at least one week prior to the scheduled exam time to be assured accommodation.</p>
+  <section id="pandas-and-plotting-practice">
+<h1>Pandas and Plotting Practice<a class="headerlink" href="#pandas-and-plotting-practice" title="Link to this heading">#</a></h1>
+<section id="problem-1-import-the-libraries">
+<h2>Problem 1: Import the libraries<a class="headerlink" href="#problem-1-import-the-libraries" title="Link to this heading">#</a></h2>
+<p>Below, import <code class="docutils literal notranslate"><span class="pre">pandas</span></code> using standard alias’s as we used in class.</p>
 </section>
 </section>
-<section id="course-outline">
-<h1>Course Outline<a class="headerlink" href="#course-outline" title="Link to this heading">#</a></h1>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Week</strong></p></th>
-<th class="head"><p><strong>Topics</strong></p></th>
-<th class="head"><p><strong>Assignment</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Introduction to Python</strong></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>1</p></td>
-<td><p>Variables, Collections, Control Flow</p></td>
-<td><p><em>Homework I</em></p></td>
-</tr>
-<tr class="row-even"><td><p>2</p></td>
-<td><p>NumPy and Pandas</p></td>
-<td><p><em>Homework II</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>3</p></td>
-<td><p>Intro to Visualization</p></td>
-<td><p><em>Homework III</em></p></td>
-</tr>
-<tr class="row-even"><td><p>4</p></td>
-<td><p>Data Access, API’s and Webscraping – <em>Assessment I</em></p></td>
-<td><p><em>Homework IV</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>5</p></td>
-<td><p>Streamlit</p></td>
-<td><p><em>Homework V</em></p></td>
-</tr>
-<tr class="row-even"><td><p>6</p></td>
-<td><p>Graphs and Maps</p></td>
-<td><p><em>Homework VI</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>7</p></td>
-<td><p>Extras and <em>Assessment II</em></p></td>
-<td><p><em>Midterm Project</em></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Predictive Models of Data</strong></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>8</p></td>
-<td><p>Introduction to Linear Regression</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p>9</p></td>
-<td><p>Introduction to Classification</p></td>
-<td><p><em>Homework VI</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>10</p></td>
-<td><p>Transformers, Cross Validation, and Grid Searching</p></td>
-<td><p><em>Homework VII</em></p></td>
-</tr>
-<tr class="row-even"><td><p>11</p></td>
-<td><p>Time Series Models</p></td>
-<td><p><em>Homework VIII</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>12</p></td>
-<td><p>Clustering and Unsupervised Learning with applications to Text Data – <em>Assessment III</em></p></td>
-<td><p><em>Homework VII</em> &amp; <em>Final Assignment I: Dataset Identification</em></p></td>
-</tr>
-<tr class="row-even"><td><p>13</p></td>
-<td><p>Introduction to Artificial Neural Networks</p></td>
-<td><p><em>Final Assignment II: EDA</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>14</p></td>
-<td><p>Pretrained Neural Nets and Huggingface</p></td>
-<td><p><em>Final Assignment</em></p></td>
-</tr>
-<tr class="row-even"><td><p>15</p></td>
-<td><p><em>Assessment IV</em></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
+<section id="pandas">
+<h1>Pandas<a class="headerlink" href="#pandas" title="Link to this heading">#</a></h1>
+<p>The problems below involve using the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library.</p>
+<section id="problem-2-make-a-dataframe-from-dict">
+<h2>Problem 2: Make a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from <code class="docutils literal notranslate"><span class="pre">dict</span></code><a class="headerlink" href="#problem-2-make-a-dataframe-from-dict" title="Link to this heading">#</a></h2>
+<p>Use the dictionary <code class="docutils literal notranslate"><span class="pre">ex_14_data</span></code> to build a pandas DataFrame named <code class="docutils literal notranslate"><span class="pre">dog_df</span></code> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_14_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Lenny&#39;</span><span class="p">,</span> <span class="s1">&#39;Hardy&#39;</span><span class="p">,</span> <span class="s1">&#39;Oden&#39;</span><span class="p">,</span> <span class="s1">&#39;Hennessy&#39;</span><span class="p">,</span> <span class="s1">&#39;Cliff&#39;</span><span class="p">],</span>
+             <span class="s1">&#39;breed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;wildman&#39;</span><span class="p">,</span> <span class="s1">&#39;lab&#39;</span><span class="p">,</span> <span class="s1">&#39;lab&#39;</span><span class="p">,</span> <span class="s1">&#39;pitbull&#39;</span><span class="p">,</span> <span class="s1">&#39;boxer&#39;</span><span class="p">],</span> 
+             <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">46</span><span class="p">],</span> 
+             <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">]}</span>
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
 </div>
-<div class="toctree-wrapper compound">
 </div>
+</section>
+<section id="problem-3-columns-of-a-dataframe">
+<h2>Problem 3: Columns of a DataFrame<a class="headerlink" href="#problem-3-columns-of-a-dataframe" title="Link to this heading">#</a></h2>
+<p>Below, extract the columns from the DataFrame <code class="docutils literal notranslate"><span class="pre">dog_df</span></code>.</p>
+</section>
+<section id="problem-4-basic-information">
+<h2>Problem 4: Basic Information<a class="headerlink" href="#problem-4-basic-information" title="Link to this heading">#</a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">.info()</span></code> method to display basic information about <code class="docutils literal notranslate"><span class="pre">dog_df</span></code>.</p>
+</section>
+<section id="a-second-dataset">
+<h2>A Second Dataset<a class="headerlink" href="#a-second-dataset" title="Link to this heading">#</a></h2>
+<p>Below, we load a built in dataset from the <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> library.  We will use this library later in the course for data visualization, but for now just note that the object <code class="docutils literal notranslate"><span class="pre">titanic_df</span></code> is a DataFrame and we can just use the <code class="docutils literal notranslate"><span class="pre">.load_dataset</span></code> function to access it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titanic_df</span> <span class="o">=</span> sns.load_dataset<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="problem-5-numerical-summaries">
+<h3>Problem 5: Numerical Summaries<a class="headerlink" href="#problem-5-numerical-summaries" title="Link to this heading">#</a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">.describe</span></code> method to display numerical summaries for the columns in <code class="docutils literal notranslate"><span class="pre">titanic_df</span></code>.</p>
+</section>
+<section id="problem-6-categorical-summaries">
+<h3>Problem 6: Categorical Summaries<a class="headerlink" href="#problem-6-categorical-summaries" title="Link to this heading">#</a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> method to display summaries of <em>only the categorical columns</em>.  (<strong>Hint</strong>: what does the <code class="docutils literal notranslate"><span class="pre">include</span></code> argument do?)</p>
+</section>
+<section id="problem-7-shape-of-the-data">
+<h3>Problem 7: Shape of the data<a class="headerlink" href="#problem-7-shape-of-the-data" title="Link to this heading">#</a></h3>
+<p>How many rows and columns are in the DataFrame <code class="docutils literal notranslate"><span class="pre">titanic_df</span></code>?</p>
+</section>
+<section id="problem-8-summaries">
+<h3>Problem 8: Summaries<a class="headerlink" href="#problem-8-summaries" title="Link to this heading">#</a></h3>
+<p>What is the mean and standard deviation of the <code class="docutils literal notranslate"><span class="pre">age</span></code> column?</p>
+</section>
+<section id="problem-9-summaries-by-sex">
+<h3>Problem 9: Summaries by sex<a class="headerlink" href="#problem-9-summaries-by-sex" title="Link to this heading">#</a></h3>
+<p>Now, determine the mean and standard deviation for the male passengers <code class="docutils literal notranslate"><span class="pre">age</span></code>.</p>
+</section>
+<section id="problem-10-young-people-in-first-class">
+<h3>Problem 10: Young people in first class<a class="headerlink" href="#problem-10-young-people-in-first-class" title="Link to this heading">#</a></h3>
+<p>Subset the data to passengers under the age of 18.  How many of these passengers traveled first class?</p>
+</section>
+<section id="problem-11-older-people-embarked">
+<h3>Problem 11: Older people embarked<a class="headerlink" href="#problem-11-older-people-embarked" title="Link to this heading">#</a></h3>
+<p>Subset the data <code class="docutils literal notranslate"><span class="pre">titanic_df</span></code> to people over the age of 70.  What was the most common point of departure for them (<code class="docutils literal notranslate"><span class="pre">embark_town</span></code>)?</p>
+</section>
+<section id="problem-12-survival-rate">
+<h3>Problem 12: Survival Rate<a class="headerlink" href="#problem-12-survival-rate" title="Link to this heading">#</a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">survived</span></code> column to compute the survival rate for all passengers.</p>
+</section>
+<section id="problem-13-renaming-columns">
+<h3>Problem 13: Renaming Columns<a class="headerlink" href="#problem-13-renaming-columns" title="Link to this heading">#</a></h3>
+<p>Rename the column <code class="docutils literal notranslate"><span class="pre">sibsp</span></code> to <code class="docutils literal notranslate"><span class="pre">num_siblings</span></code>.</p>
+</section>
+<section id="problem-14-dropping-columns">
+<h3>Problem 14: Dropping Columns<a class="headerlink" href="#problem-14-dropping-columns" title="Link to this heading">#</a></h3>
+<p>Drop the column <code class="docutils literal notranslate"><span class="pre">adult_male</span></code> from <code class="docutils literal notranslate"><span class="pre">titanic_df</span></code>.</p>
+<p><strong>Problem 15: Plotting</strong></p>
+<p>Consider the problem of identifying a column that helps distinguish passengers who survived and those that did not. Use seaborn to generate plots that identify features (columns) which distinguish the group of people who survived vs those that did not.  (i.e. does age determine who survived, fare, class, …)</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -635,15 +572,6 @@ On disabilities: If you have a qualified disability that requires academic accom
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="data-types.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Intro to Python and Jupyter Notebooks</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -661,18 +589,27 @@ On disabilities: If you have a qualified disability that requires academic accom
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data Bootcamp</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor">Instructor</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teaching-assistant">Teaching Assistant</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help">Getting help</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-content">Course Content</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deliverables-and-grades">Deliverables and grades</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-work-habits">Recommended work habits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#policies">Policies</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pandas and Plotting Practice</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-import-the-libraries">Problem 1: Import the libraries</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#course-outline">Course Outline</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">Pandas</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-make-a-dataframe-from-dict">Problem 2: Make a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> from <code class="docutils literal notranslate"><span class="pre">dict</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-columns-of-a-dataframe">Problem 3: Columns of a DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-basic-information">Problem 4: Basic Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-second-dataset">A Second Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-numerical-summaries">Problem 5: Numerical Summaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-6-categorical-summaries">Problem 6: Categorical Summaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-7-shape-of-the-data">Problem 7: Shape of the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-8-summaries">Problem 8: Summaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-9-summaries-by-sex">Problem 9: Summaries by sex</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-10-young-people-in-first-class">Problem 10: Young people in first class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-11-older-people-embarked">Problem 11: Older people embarked</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-12-survival-rate">Problem 12: Survival Rate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-13-renaming-columns">Problem 13: Renaming Columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-14-dropping-columns">Problem 14: Dropping Columns</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
