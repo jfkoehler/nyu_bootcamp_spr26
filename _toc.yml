@@ -3,15 +3,19 @@
 
 format: jb-book
 root: syllabus
-chapters:
-- file: data-types
-- file: iteration
-- file: exercises
-- file: functions
-- file: oop
-- file: pandas_intro
-- file: pandas_II
-- file: plotting_seaborn
-- file: plotting_activity
-- file: EDA_activity
-- file: extra_resources
+parts:
+  - caption: Introduction to Python and `pandas`
+    chapters:
+    - file: data-types
+    - file: iteration
+    - file: exercises
+    - file: functions
+    - file: oop
+    - file: pandas_intro
+    - file: pandas_II
+    - file: plotting_seaborn
+    - file: plotting_activity
+  - caption: Homework and Activities
+    chapters:
+    - file: EDA_activity
+    - file: extra_resources
