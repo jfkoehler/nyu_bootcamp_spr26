@@ -18,4 +18,5 @@ parts:
   - caption: Homework and Activities
     chapters:
     - file: EDA_activity
+    - file: plotting_pandas_practice
     - file: extra_resources
