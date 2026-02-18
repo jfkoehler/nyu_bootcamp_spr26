@@ -15,6 +15,7 @@ parts:
     - file: pandas_II
     - file: plotting_seaborn
     - file: plotting_activity
+    - file: data_apis
   - caption: Homework and Activities
     chapters:
     - file: EDA_activity
