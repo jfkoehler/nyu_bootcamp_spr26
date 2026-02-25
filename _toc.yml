@@ -16,6 +16,8 @@ parts:
     - file: plotting_seaborn
     - file: plotting_activity
     - file: data_apis
+    - file: data_apis-II
+    - file: html_data
   - caption: Homework and Activities
     chapters:
     - file: EDA_activity
