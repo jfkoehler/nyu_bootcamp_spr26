@@ -1,0 +1,1112 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Learning Objectives &#8212; Data Bootcamp</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rolling_statistics';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="EDA Case Study" href="EDA_activity.html" />
+    <link rel="prev" title="Handling Missing Values and Using datetime" href="datetimes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="syllabus.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Data Bootcamp - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Data Bootcamp - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="syllabus.html">
+                    Data Bootcamp
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Python and `pandas`</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data-types.html">Intro to Python and Jupyter Notebooks</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="iteration.html">Iteration and Control Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises.html">Python Iteration and Control Flow Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oop.html">Functions and Classes</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="pandas_intro.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_II.html">Reading Files and Split Apply Combine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting_seaborn.html">More plotting with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">seaborn</span></code></a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="plotting_activity.html">Data and Plotting with <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and <code class="docutils literal notranslate"><span class="pre">seaborn</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Accessing Data with API’s</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="data_apis-II.html">Accessing Data with API’s</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="html_data.html">Extracting Data From HTML</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="eda_warmup.html">Example Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datetimes.html">Handling Missing Values and Using <code class="docutils literal notranslate"><span class="pre">datetime</span></code></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Learning Objectives</a></li>
+
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework and Activities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="EDA_activity.html">EDA Case Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_practice.html">Pandas and Plotting Practice</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="extra_resources.html">Supplemental Reading</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jfkoehler/nyu_bootcamp_spr26/blob/main/rolling_statistics.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_spr26" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_spr26/issues/new?title=Issue%20on%20page%20%2Frolling_statistics.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/rolling_statistics.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Learning Objectives</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Learning Objectives</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-guide">Lesson Guide</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-rolling-statistics">Time Series Rolling Statistics</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#guided-practice">Guided Practice</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-sales-data">Plot the sales data.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-for-rolling-functions">Parameters for <code class="docutils literal notranslate"><span class="pre">rolling()</span></code> Functions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-rolling-daily-sum-over-all-stores">Calculate the rolling daily sum over all stores.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-expanding-mean">The Expanding Mean</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-and-plot-the-expanding-mean-below-resample-by-quarter">Calculate and plot the expanding mean below. Resample by quarter.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exponentially-weighted-windows">Exponentially Weighted Windows</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#x-t-frac-x-t-1-alpha-x-t-1-1-alpha-2x-t-1-1-alpha-t-x-0-1-1-alpha-1-alpha-2-1-alpha-t">$<span class="math notranslate nohighlight">\( x_t = \frac{x_t + (1 - \alpha)x_{t-1} + (1 - \alpha)^2x_{t-1} + ... + (1 - \alpha)^{t}x_0} {1 + (1 - \alpha) + (1 - \alpha)^2 + ... + (1 - \alpha)^{t}} \)</span>$</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-y-t-y-t-y-t-1">$<span class="math notranslate nohighlight">\( \Delta y_t = y_t - y_{t-1} \)</span>$</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">Recap</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-engineering-with-time-series">Feature Engineering with Time Series</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="learning-objectives">
+<h1>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h1>
+<p><strong>After this lesson, you will be able to:</strong></p>
+<ul class="simple">
+<li><p>Define the concepts of trend and seasonality and be able to identify them visually.</p></li>
+<li><p>Use boxplots to compare distributions.</p></li>
+<li><p>Plot time series data over time to identify large-scale trends in data.</p></li>
+<li><p>Investigate trends by computing simple aggregates with Pandas using the <code class="docutils literal notranslate"><span class="pre">.resample()</span></code> function.</p></li>
+<li><p>Compute rolling statistics with Pandas to compare data of a date to a smaller window of time.</p></li>
+<li><p>Utilize exponentially weighted windows to average out noise.</p></li>
+<li><p>Use differences to remove trends in time series data.</p></li>
+<li><p>Use the Pandas’ <code class="docutils literal notranslate"><span class="pre">.shift()</span></code> function to create lagged features.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="lesson-guide">
+<h1>Lesson Guide<a class="headerlink" href="#lesson-guide" title="Link to this heading">#</a></h1>
+<section id="time-series-rolling-statistics">
+<h2>Time Series Rolling Statistics<a class="headerlink" href="#time-series-rolling-statistics" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#A"><span class="xref myst">Trend and Seasonality</span></a></p></li>
+<li><p><a class="reference internal" href="#B"><span class="xref myst">Aggregate Data</span></a></p></li>
+<li><p><a class="reference internal" href="#C"><span class="xref myst">Rolling Statistics</span></a></p></li>
+<li><p><a class="reference internal" href="#D"><span class="xref myst">Differencing a Time Series and Stationarity</span></a></p></li>
+<li><p><a class="reference internal" href="#E"><span class="xref myst">Shifting and Lagging Time Series Data</span></a></p></li>
+<li><p><a class="reference internal" href="#F"><span class="xref myst">Independent Practice</span></a></p></li>
+</ul>
+<hr class="docutils" />
+<h2><a id="A">Trend and Seasonality</a></h2><p><strong>Question:</strong> What constitutes a trend in data? Is linearity required for a trend?</p>
+<ul class="simple">
+<li><p>A trend is any long-term change in the value we’re measuring. Trends may “change direction,” going from an increasing trend to a decreasing trend.</p></li>
+<li><p>Trends can only be measured within the scope of the data collected; there may be trends that are unmeasurable if the data are not complete.</p></li>
+</ul>
+<p>An example of an upward trend:
+<img alt="" src="_images/trend-line2.png" /></p>
+<ul class="simple">
+<li><p>When patterns repeat over <em>known, fixed periods</em> of time within a data set, we call this <strong>seasonality</strong>.</p></li>
+<li><p>A seasonal pattern exists when a series is influenced by factors related to the cyclic nature of time — i.e., time of month, quarter, year, etc. Seasonality is of a fixed and known period, otherwise it is not truly seasonality. Additionally, it must be either attributed to another factor or counted as a set of anomalous events in the data.</p></li>
+</ul>
+<blockquote>
+<div><p>Can you think of some seasonal patterns from your own experience?</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trends</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/gt_drone_racing.csv&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">trends</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>drone racing: (Worldwide)</th>
+    </tr>
+    <tr>
+      <th>Week</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-11-09</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2014-11-16</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2014-11-23</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2014-11-30</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2014-12-07</th>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trends</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 108 entries, 2014-11-09 to 2016-11-27
+Data columns (total 1 columns):
+ #   Column                     Non-Null Count  Dtype
+---  ------                     --------------  -----
+ 0   drone racing: (Worldwide)  108 non-null    int64
+dtypes: int64(1)
+memory usage: 1.7 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trends</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>drone racing: (Worldwide)</th>
+    </tr>
+    <tr>
+      <th>Week</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2016-10-30</th>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>2016-11-06</th>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>2016-11-13</th>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>2016-11-20</th>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>2016-11-27</th>
+      <td>46</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trends</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Week&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/00961e89ffd35e6d65a97c32c4b4586a589c7243f77d567e790f5e6e65eacb8c.png" src="_images/00961e89ffd35e6d65a97c32c4b4586a589c7243f77d567e790f5e6e65eacb8c.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="guided-practice">
+<h1>Guided Practice<a class="headerlink" href="#guided-practice" title="Link to this heading">#</a></h1>
+<p>Let’s look for trends and seasonality in data made available by a German drugstore, Rossmann. I have shared a link to the data <a class="reference external" href="https://drive.google.com/drive/folders/1ZxPxMiiNe2GgTM03AeO_y5iCGW4GJxDk?usp=sharing">here</a>.</p>
+<p>These data contain the daily sales made at the drugstore, as well as whether or not a sale or holiday affected the data.</p>
+<p>Because we are most interested in the <code class="docutils literal notranslate"><span class="pre">Date</span></code> column (which contains the date of sales for each store), we will make sure to process that as a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> type and make it the index of our DataFrame, as we did with our Apple stock data.</p>
+<p>Let’s recall the steps for preprocessing time series data with Pandas:</p>
+<ul class="simple">
+<li><p>Convert time data to a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">datetime</span></code> to index the DataFrame.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This allows us to easily filter by date. Let’s add a column for <code class="docutils literal notranslate"><span class="pre">Year</span></code> and <code class="docutils literal notranslate"><span class="pre">Month</span></code> based on the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> index.</p>
+<p>There are more than a million sales data points in this data set, so, for some simple exploratory data analysis (EDA), we’ll focus on just one store.</p>
+<p><em>Note: We explicitly add a <code class="docutils literal notranslate"><span class="pre">.copy()</span></code> to the returned DataFrame because we will be making changes to this DataFrame object later. If we didn’t specify this, we will receive SettingCopyWarnings later on because Pandas will not know if we want to edit a view of the original data object (<code class="docutils literal notranslate"><span class="pre">data</span></code>) or a separate data object (<code class="docutils literal notranslate"><span class="pre">store1_data</span></code>). Without the <code class="docutils literal notranslate"><span class="pre">.copy()</span></code>, the variable <code class="docutils literal notranslate"><span class="pre">store1_data</span></code> will simply be a reference the original data object in memory.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#limit to store 1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-the-sales-data">
+<h1>Plot the sales data.<a class="headerlink" href="#plot-the-sales-data" title="Link to this heading">#</a></h1>
+<p>Let’s investigate whether or not promotions affect sales. For this, we’ll use boxplots.</p>
+<p>On state holidays, the store is closed (which means there are zero sales), so we need to cut those days out. (Contextual knowledge like this is always necessary to truly explain time series phenomena.)</p>
+<blockquote>
+<div><p><strong>Check for Understanding:</strong> Can you think of any other special considerations we should make when tracking sales?</p>
+</div></blockquote>
+<p>Now, check to see if there is a difference affecting sales on promotion days.</p>
+<p>We can see that there <em>is</em> a difference in sales on promotion days.</p>
+<p>Why is it important to separate out days on which the store is closed? Because there aren’t any promotions on those days either, so including them will bias our sales data on days without promotions! Remember to think about the business logic in addition to analyzing the raw data.</p>
+<p>We may also want to compare sales across days of the week:</p>
+<p>Lastly, we want to identify larger-scale trends in our data. How did sales change from 2014 to 2015? Were there any particularly interesting outliers in terms of sales or customer visits?</p>
+<p>To plot the sales and customer visits over time:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter to days Store 1 was open.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that there are large spikes of sales and customers toward the end of 2013 and 2014, leading into the first quarter of 2014 and 2015.</p>
+<p>Let’s use index filtering to filter just to 2015 changes over time. This should make it easier to identify the holiday sales bump.</p>
+<h2><a id= "B">Aggregate Data</a></h2><p>If we want to investigate trends over time in sales, as always, we’ll start by computing simple aggregates. We want to know: What were the mean and median sales in each month and year?</p>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">data.resample</span></code> on the whole data set and provide:
+- A parameter for the level on which to roll up to: <code class="docutils literal notranslate"><span class="pre">'D'</span></code> for day, <code class="docutils literal notranslate"><span class="pre">'W'</span></code> for week, <code class="docutils literal notranslate"><span class="pre">'M'</span></code> for month, <code class="docutils literal notranslate"><span class="pre">'A'</span></code> for year.
+- The aggregation method to perform: <code class="docutils literal notranslate"><span class="pre">mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">median()</span></code>, <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, etc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#average annual sales</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It looks like average sales were highest in 2015. Now, let’s look at the median annual sales.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#median annual sales</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#quarterly average sales</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For more information, see Pandas’ <code class="docutils literal notranslate"><span class="pre">.resample</span></code>  <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.resample.html">documentation</a>.</p>
+<h2><a id = "C">Rolling Statistics</a><h2><p>With time series, we can “roll” statistics across time. For example, the rolling mean is the mean of a moving window across time periods. Pandas offers a variety of functionalities for creating rolling statistics, which we’ll only scratch the surface of here.</p>
+<p>E.g., to understand holidays sales, we don’t want to compare sales data in late December with the entire month but instead with a few days immediately surrounding it. We can do this using rolling averages.</p>
+<p>The syntax for these can be a little tricky at first. We’ll be using a <code class="docutils literal notranslate"><span class="pre">rolling()</span></code> function with a statistical function chained to it. Let’s dive into more detail.</p>
+</section>
+<section id="parameters-for-rolling-functions">
+<h1>Parameters for <code class="docutils literal notranslate"><span class="pre">rolling()</span></code> Functions<a class="headerlink" href="#parameters-for-rolling-functions" title="Link to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">rolling().mean()</span></code> (as well as <code class="docutils literal notranslate"><span class="pre">rolling().median())</span></code> can take the following parameters:</p>
+<ul class="simple">
+<li><p>The first indicates the time series to aggregate.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">window</span></code> indicates the number of periods to include in the average.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">center</span></code> indicates whether the window should be centered on the date or use data prior to that date.</p></li>
+</ul>
+<section id="calculate-the-rolling-daily-sum-over-all-stores">
+<h2>Calculate the rolling daily sum over all stores.<a class="headerlink" href="#calculate-the-rolling-daily-sum-over-all-stores" title="Link to this heading">#</a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">.resample()</span></code> function to calculate the daily total over all of the stores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#total daily sales</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">.rolling()</span></code> function to calculate the rolling average over a three-day period.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#three day rolling mean</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use our index filtering to just look at 2015.</p>
+<p>Instead of plotting the full time series, we can plot the rolling mean instead, which smooths random changes in sales and removes outliers, helping us identify larger trends.</p>
+</section>
+</section>
+<section id="the-expanding-mean">
+<h1>The Expanding Mean<a class="headerlink" href="#the-expanding-mean" title="Link to this heading">#</a></h1>
+<p>The expanding mean simply uses all of the data points up to the current time to calculate the mean, as opposed to a moving window.</p>
+<section id="calculate-and-plot-the-expanding-mean-below-resample-by-quarter">
+<h2>Calculate and plot the expanding mean below. Resample by quarter.<a class="headerlink" href="#calculate-and-plot-the-expanding-mean-below-resample-by-quarter" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rolling_mean</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">Sales</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">expanding_mean</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">Sales</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">expanding</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">rolling_mean</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">Sales</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">expanding_mean</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">Sales</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">expanding</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;data&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exponentially-weighted-windows">
+<h1>Exponentially Weighted Windows<a class="headerlink" href="#exponentially-weighted-windows" title="Link to this heading">#</a></h1>
+<p>Exponentially weighted windows are one of the most common and effective ways of averaging out noise in time series data. The averaging is done with an “exponential decay” on the contribution of prior means, decreasing the contribution of time points that are further in the past.</p>
+<p>The (adjusted) exponentially weighted mean for time, <span class="math notranslate nohighlight">\(t\)</span>, is defined as:</p>
+<p><a id="-xt--fracxt-----alphaxt------alphaxt--------alphatx------alpha-----alpha-------alphat-"></a></p>
+</section>
+<section id="x-t-frac-x-t-1-alpha-x-t-1-1-alpha-2x-t-1-1-alpha-t-x-0-1-1-alpha-1-alpha-2-1-alpha-t">
+<h1>$<span class="math notranslate nohighlight">\( x_t = \frac{x_t + (1 - \alpha)x_{t-1} + (1 - \alpha)^2x_{t-1} + ... + (1 - \alpha)^{t}x_0} {1 + (1 - \alpha) + (1 - \alpha)^2 + ... + (1 - \alpha)^{t}} \)</span>$<a class="headerlink" href="#x-t-frac-x-t-1-alpha-x-t-1-1-alpha-2x-t-1-1-alpha-t-x-0-1-1-alpha-1-alpha-2-1-alpha-t" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p><strong>Note:</strong> Review Pandas’ <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/computation.html#exponentially-weighted-windows">documentation</a> for more information.</p>
+</div></blockquote>
+<p><strong>Calculate and plot the exponentially weighted sum along with the rolling sum. What’s the difference?</strong></p>
+<p>For example: <code class="docutils literal notranslate"><span class="pre">.resample('Q').sum().ewm(span=10).mean()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rolling_mean</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">Sales</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">exp_weighted_mean</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">Sales</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Q&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">ewm</span><span class="p">(</span><span class="n">span</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Note that rolling doesn’t understand if you are missing periods (e.g., if you roll over three days and your data are missing weekends, it’ll roll Fri/Sat/Sun), so you need to resample first if you care about that.</em></p>
+<blockquote>
+<div><p><strong>Question:</strong> How does the signal that’s captured by rolling statistics differ from the signal captured by resampling time series data?</p>
+</div></blockquote>
+<h2><a id = "D">Differencing a Time Series and Stationarity</a></h2><p>If a time series is stationary, the mean, variance, and autocorrelation (covered in the next section) will be constant over time. Forecasting methods typically assume the time series you are forecasting on to be stationary — or at least approximately stationary.</p>
+<p>The most common way to make a time series stationary is through “differencing.” This procedure converts a time series into the difference between values.</p>
+<p><a id="-delta-yt--yt---yt--"></a></p>
+</section>
+<section id="delta-y-t-y-t-y-t-1">
+<h1>$<span class="math notranslate nohighlight">\( \Delta y_t = y_t - y_{t-1} \)</span>$<a class="headerlink" href="#delta-y-t-y-t-y-t-1" title="Link to this heading">#</a></h1>
+<p>This removes trends in the time series and ensures that the mean across time is zero. In most cases, this only requires a single difference, although, in some, a second difference (or third, etc.) will be necessary to remove trends.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">store1_data</span><span class="p">[</span><span class="s1">&#39;Sales&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">periods</span> <span class="o">=</span> <span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot the differenced data and original data side by side</span>
+</pre></div>
+</div>
+</div>
+</div>
+<h2><a id="E">Shifting and Lagging Time Series Data</a></h2><p>Another common operation on time series data is shifting or lagging values backward and forward in time. This can help us calculate the percentage of change from sample to sample. Pandas has a <code class="docutils literal notranslate"><span class="pre">.shift()</span></code> method for shifting the data in a DataFrame.</p>
+<p>Let’s take a look at the Rossman data when we apply lagged features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store1_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s shift the sales price by one day.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shifted_forward</span> <span class="o">=</span> <span class="n">store1_data</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">shifted_forward</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Notice that the first row now contains NaN values because there wasn’t a previous day’s data to shift to that day.</em></p>
+<p>Next, let’s shift the sales prices by five days.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shifted_forward5</span> <span class="o">=</span> <span class="n">store1_data</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">shifted_forward5</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also use negative numbers to shift the sales values in the reverse direction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shifted_backward</span> <span class="o">=</span> <span class="n">store1_data</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">shifted_backward</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lags can be used to calculate the changes in the values you are tracking with your time series data. In this case, we can use Pandas’ <code class="docutils literal notranslate"><span class="pre">.shift()</span></code> method to look at the changes in sales.</p>
+<p>Let’s create a new column in our Rossman DataFrame that contains the previous day’s sales.</p>
+<p><em>Note that we added <code class="docutils literal notranslate"><span class="pre">.copy()</span></code> when we filtered out the store 1 sales earlier. If we didn’t explictly tell Pandas that <code class="docutils literal notranslate"><span class="pre">store1_data</span></code> is a copy (instead of a view), we would receive a <code class="docutils literal notranslate"><span class="pre">SettingCopyWarning</span></code>. Here is a useful <a class="reference external" href="https://www.youtube.com/watch?v=4R4WsDJ-KVc">video</a> that helps explain how to avoid SettingCopyWithWarning errors in Pandas.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store1_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Prev Day Sales&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">store1_data</span><span class="p">[</span><span class="s1">&#39;Sales&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">store1_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using our new column, it’s simple to calculate the one-day change in sales at Store 1. Let’s create a new column for this value in our DataFrame as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store1_data</span><span class="p">[</span><span class="s1">&#39;Sales Change&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">store1_data</span><span class="p">[</span><span class="s1">&#39;Sales&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">store1_data</span><span class="p">[</span><span class="s1">&#39;Prev Day Sales&#39;</span><span class="p">]</span>
+<span class="n">store1_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><strong>Question:</strong> What are some other real-world applications you can think of for shifting data in a time series?</p>
+</div></blockquote>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="recap">
+<h1>Recap<a class="headerlink" href="#recap" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Trends are long-term changes in data. We have to sort through the noise of a time series to identify trends.</p></li>
+<li><p>We can resample the data to look at simple aggregates and identify patterns.</p></li>
+<li><p>Rolling statistics give us a local statistic of an average in time, smoothing out random fluctuations and removing outliers.</p></li>
+</ul>
+<h2><a id="F">Independent Practice</a></h2><ol class="arabic simple">
+<li><p>Load the Unemployment data set from the google drive folder. Perform any necessary cleaning and preprocess the data by creating a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> index.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Calculate the rolling mean of years with <code class="docutils literal notranslate"><span class="pre">window=3</span> </code>, without centering, and plot both the unemployment rates and the rolling mean data.</p></li>
+</ol>
+<ol class="arabic simple" start="3">
+<li><p>Calculate the rolling median with <code class="docutils literal notranslate"><span class="pre">window=5</span></code> and <code class="docutils literal notranslate"><span class="pre">window=15</span></code>. Plot both together with the original data.</p></li>
+</ol>
+<ol class="arabic simple" start="4">
+<li><p>Calculate and plot the expanding mean. Resample by quarter. Plot the rolling mean and the expanding mean together.</p></li>
+</ol>
+<ol class="arabic simple" start="5">
+<li><p>Calculate and plot the exponentially weighted sum along with the rolling sum.</p></li>
+</ol>
+<ol class="arabic simple" start="6">
+<li><p>Difference the unemployment rate and plot.</p></li>
+</ol>
+<ol class="arabic simple" start="7">
+<li><p>Is the unemployment rate stationary?  Is the differenced version of the unemployment rate stationary?</p></li>
+</ol>
+<section id="feature-engineering-with-time-series">
+<h2>Feature Engineering with Time Series<a class="headerlink" href="#feature-engineering-with-time-series" title="Link to this heading">#</a></h2>
+<p>Just as we saw with the housing data, there are ways to extract additional features from time series datasets.  A library called <code class="docutils literal notranslate"><span class="pre">tsfresh</span></code> can help with this <a class="reference external" href="https://tsfresh.readthedocs.io/en/latest/">docs</a>.  Take a look through the documentation and identify a few ideas about what features of a time series dataset might be engineered (and think about how to actually do so!).</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="datetimes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Handling Missing Values and Using <code class="docutils literal notranslate"><span class="pre">datetime</span></code></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="EDA_activity.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">EDA Case Study</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Learning Objectives</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-guide">Lesson Guide</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-rolling-statistics">Time Series Rolling Statistics</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#guided-practice">Guided Practice</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-sales-data">Plot the sales data.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-for-rolling-functions">Parameters for <code class="docutils literal notranslate"><span class="pre">rolling()</span></code> Functions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-rolling-daily-sum-over-all-stores">Calculate the rolling daily sum over all stores.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-expanding-mean">The Expanding Mean</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-and-plot-the-expanding-mean-below-resample-by-quarter">Calculate and plot the expanding mean below. Resample by quarter.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exponentially-weighted-windows">Exponentially Weighted Windows</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#x-t-frac-x-t-1-alpha-x-t-1-1-alpha-2x-t-1-1-alpha-t-x-0-1-1-alpha-1-alpha-2-1-alpha-t">$<span class="math notranslate nohighlight">\( x_t = \frac{x_t + (1 - \alpha)x_{t-1} + (1 - \alpha)^2x_{t-1} + ... + (1 - \alpha)^{t}x_0} {1 + (1 - \alpha) + (1 - \alpha)^2 + ... + (1 - \alpha)^{t}} \)</span>$</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-y-t-y-t-y-t-1">$<span class="math notranslate nohighlight">\( \Delta y_t = y_t - y_{t-1} \)</span>$</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">Recap</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-engineering-with-time-series">Feature Engineering with Time Series</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jacob Frias Koehler
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
