@@ -18,14 +18,16 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-hamming_distance(dna1, dna2)
+rolling_mean = data.Sales.resample('Q').sum().rolling(window=1, center=False).mean()
+expanding_mean = data.Sales.resample('Q').sum().expanding().mean()
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mTypeError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[5], line 1[0m
-[0;32m----> 1[0m [43mhamming_distance[49m[43m([49m[43mdna1[49m[43m,[49m[43m [49m[43mdna2[49m[43m)[49m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[14], line 1[0m
+[0;32m----> 1[0m rolling_mean [38;5;241m=[39m [43mdata[49m[38;5;241m.[39mSales[38;5;241m.[39mresample([38;5;124m'[39m[38;5;124mQ[39m[38;5;124m'[39m)[38;5;241m.[39msum()[38;5;241m.[39mrolling(window[38;5;241m=[39m[38;5;241m1[39m, center[38;5;241m=[39m[38;5;28;01mFalse[39;00m)[38;5;241m.[39mmean()
+[1;32m      2[0m expanding_mean [38;5;241m=[39m data[38;5;241m.[39mSales[38;5;241m.[39mresample([38;5;124m'[39m[38;5;124mQ[39m[38;5;124m'[39m)[38;5;241m.[39msum()[38;5;241m.[39mexpanding()[38;5;241m.[39mmean()
 
-[0;31mTypeError[0m: hamming_distance() takes 0 positional arguments but 2 were given
+[0;31mNameError[0m: name 'data' is not defined
 

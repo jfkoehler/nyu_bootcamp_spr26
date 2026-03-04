@@ -18,6 +18,9 @@ parts:
     - file: data_apis
     - file: data_apis-II
     - file: html_data
+    - file: eda_warmup
+    - file: datetimes
+    - file: rolling_statistics
   - caption: Homework and Activities
     chapters:
     - file: EDA_activity
