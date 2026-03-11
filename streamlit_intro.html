@@ -465,6 +465,53 @@
   <section class="tex2jax_ignore mathjax_ignore" id="midterm-setup-and-intro-to-streamlit">
 <h1>Midterm Setup and Intro to <code class="docutils literal notranslate"><span class="pre">streamlit</span></code><a class="headerlink" href="#midterm-setup-and-intro-to-streamlit" title="Link to this heading">#</a></h1>
 <p>The first part of class today will focus on making sure you are set up for your midterm project.  Get together with your group members and use the form <a class="reference external" href="https://forms.gle/fKSGF2Ybp89Lf3mx8">here</a> to answer the questions related to your midterm project.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple">
+<li><p>Load the Unemployment data set from the google drive folder. Perform any necessary cleaning and preprocess the data by creating a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> index.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unemp</span> <span class="o">=</span> <span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">unemp</span> <span class="o">=</span> <span class="s1">&#39;</span>
+            <span class="o">^</span>
+<span class="ne">SyntaxError</span>: unterminated string literal (detected at line 1)
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Calculate the rolling mean of years with <code class="docutils literal notranslate"><span class="pre">window=3</span> </code>, without centering, and plot both the unemployment rates and the rolling mean data.</p></li>
+</ol>
+<ol class="arabic simple" start="3">
+<li><p>Calculate the rolling median with <code class="docutils literal notranslate"><span class="pre">window=5</span></code> and <code class="docutils literal notranslate"><span class="pre">window=15</span></code>. Plot both together with the original data.</p></li>
+</ol>
+<ol class="arabic simple" start="4">
+<li><p>Calculate and plot the expanding mean. Resample by quarter. Plot the rolling mean and the expanding mean together.</p></li>
+</ol>
+<ol class="arabic simple" start="5">
+<li><p>Calculate and plot the exponentially weighted sum along with the rolling sum.</p></li>
+</ol>
+<ol class="arabic simple" start="6">
+<li><p>Difference the unemployment rate and plot.</p></li>
+</ol>
+<ol class="arabic simple" start="7">
+<li><p>Is the unemployment rate stationary?  Is the differenced version of the unemployment rate stationary?</p></li>
+</ol>
 <section id="introduction-to-streamlit">
 <h2>Introduction to Streamlit<a class="headerlink" href="#introduction-to-streamlit" title="Link to this heading">#</a></h2>
 <p>Streamlit is a high level library for building web applications.  To begin, you need to download a text editor – I recommend VSCode <a class="reference external" href="https://code.visualstudio.com/download">here</a>.  You will also need a local version of Python, you can get this through VSCode or download directly with either Anaconda or from Python <a class="reference external" href="https://www.python.org/downloads/">here</a>.</p>
