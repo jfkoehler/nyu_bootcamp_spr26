@@ -22,6 +22,7 @@ parts:
     - file: datetimes
     - file: rolling_statistics
     - file: streamlit_intro
+    - file: unsupervised_learning
   - caption: Homework and Activities
     chapters:
     - file: EDA_activity
