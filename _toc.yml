@@ -22,7 +22,12 @@ parts:
     - file: datetimes
     - file: rolling_statistics
     - file: streamlit_intro
+  - caption: Supervised and Unsupervised Learning
+    chapters:
     - file: unsupervised_learning
+    - file: segmentation_problem
+    - file: regression_intro
+    - file: practice_regression
   - caption: Homework and Activities
     chapters:
     - file: EDA_activity
