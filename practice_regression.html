@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'practice_regression';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="EDA Case Study" href="EDA_activity.html" />
+    <link rel="next" title="Model Complexity and Evaluation" href="polynomial_models.html" />
     <link rel="prev" title="Introduction to Linear Regression" href="regression_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -219,6 +219,14 @@
 <li class="toctree-l1"><a class="reference internal" href="segmentation_problem.html">Clustering Problem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regression_intro.html">Introduction to Linear Regression</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Regression Part II</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="polynomial_models.html">Model Complexity and Evaluation</a></li>
+
+
+
+
 
 
 
@@ -575,7 +583,7 @@
 <p>The goal here is to predict sales. We have spending on three different media types to help make such predictions.  Here, we want to be selective about what features are used as inputs to the model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ads</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/jfkoehler/nyu_bootcamp_fa24/main/data/ads.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ads</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/jfkoehler/nyu_bootcamp_spr26/main/data/ads.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -792,7 +800,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x13b7fd2e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x135b16de0&gt;
 </pre></div>
 </div>
 <img alt="_images/36e19f2b579cb9d82e5645c53e10088ae7a3d17b474020b970be3a7f63f05fa8.png" src="_images/36e19f2b579cb9d82e5645c53e10088ae7a3d17b474020b970be3a7f63f05fa8.png" />
@@ -906,7 +914,7 @@
 <h1>Example II: Credit Data<a class="headerlink" href="#example-ii-credit-data" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">credit</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/jfkoehler/nyu_bootcamp_fa24/main/data/Credit.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">credit</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/jfkoehler/nyu_bootcamp_spr26/main/data/Credit.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1180,11 +1188,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="EDA_activity.html"
+       href="polynomial_models.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">EDA Case Study</p>
+        <p class="prev-next-title">Model Complexity and Evaluation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
