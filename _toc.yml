@@ -29,6 +29,7 @@ parts:
     - file: regression_intro
     - file: practice_regression
     - file: polynomial_models
+    - file: knn_classification
   - caption: Homework and Activities
     chapters:
     - file: EDA_activity
