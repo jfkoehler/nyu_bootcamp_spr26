@@ -1,0 +1,3026 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Evaluating Classification Models &#8212; Data Bootcamp</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"56f24504d7054750899deb2fb7e05f2e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "091e3ad75697467f85628311c70f1148": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "814a2a55292a40cd918f3214b0241422": {"model_name": "FloatSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "FloatSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "FloatSliderView", "behavior": "drag-tap", "continuous_update": true, "description": "p", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_56f24504d7054750899deb2fb7e05f2e", "max": 1.0, "min": 0.0, "orientation": "horizontal", "readout": true, "readout_format": ".2f", "step": 0.05, "style": "IPY_MODEL_091e3ad75697467f85628311c70f1148", "tabbable": null, "tooltip": null, "value": 0.0}}, "16dda197f0dd4d918cd827c4272d122d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f4034581af5d489c89c73a9b39c7b214": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_814a2a55292a40cd918f3214b0241422", "IPY_MODEL_72bbfd15e67d4519b983a3cacaa80408"], "layout": "IPY_MODEL_16dda197f0dd4d918cd827c4272d122d", "tabbable": null, "tooltip": null}}, "98d0ec91bc264c23a819d4509e0f69ea": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "72bbfd15e67d4519b983a3cacaa80408": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_98d0ec91bc264c23a819d4509e0f69ea", "msg_id": "", "outputs": [{"output_type": "stream", "name": "stdout", "text": "Precision 0.2076\nRecall: 1.0\n"}, {"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<Figure size 640x480 with 2 Axes>", "image/png": "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rM6dO1/w/F69erlK7r8XGBio5ORkt9XjSspnCT00NFQ9evTQpEmT9Mwzz+jIkSN65ZVXNGPGDF+FBEn2vADNeewaPT/OqslfjdQHr/5NEr1z+IdPD25ye92m8wm16Xz+MnlAYIB6DzumviMOXPJ9l23cVhbhAeXKp9OWk5OTNWnSJPXv319hYWEaPny47rjjDl+GBADwc8V3JZS+0mtY/PPWRZ8m9NDQUM2cOVMzZ870ZRgAABM585CVUrf3olzvSwxWAwBgAqwUAgAwlUutx+5Je39EQgcAmIrhZcm9NLetXQlI6AAAU2EMHQAA+C166AAAUzEMeVly908kdACAqTjlZcndT+9Dp+QOAIAJ0EMHAJgKt60BAGACXt+25kVbX6LkDgCACdBDBwCYitf3oftpD52EDgAwFa9vW/PT+9YouQMAYAL00AEApkLJHQAAEzBk8WqmOg9nAQDgCmB4eR+6vyZ0xtABADABeugAAFNhDB0AABMwDO9We+O2NQAA4DP00AEApkLJHQAAMzC8u21NfprQKbkDAGAC9NABAKbilJcldz+9D52EDgAwleJZ7t6190eU3AEAMAF66AAAU6moS7+S0AEAplJRF5YhoQMATKWi3ofOGDoAACZADx0AYCrMcgcAwBSKV4or7SYPJsU5HA51795dGzZscO3btGmT+vTpo/j4eN15551atWqVW5t77rlHjRs3dtt++eUXSZJhGJozZ47atm2r1q1ba9asWXI6nSW6anroAACUgN1u16hRo5SWlubal5WVpYcfflh9+/bVs88+q59++knJycmKjIxUhw4dVFRUpN27d2v58uWqX7++q91VV10lSVq6dKk++ugjLViwQIWFhXriiScUERGhgQMHehwXCR0AYCqGl2u5X6xtenq6Ro0aJeN3dfm1a9eqRo0aGjlypCSpfv362rBhgz788EN16NBB+/fvV0FBgZo3by6bzXbO+y5btkwjRoxQQkKCJGn06NGaN28eCR0AUHGV5yz3jRs3qk2bNnr88cfVokUL1/5bb71VTZs2Pef8kydPSir+IlCrVq3zJvPDhw8rMzNTrVq1cu1r2bKlDhw4oCNHjqhmzZoexU1CBwDAQ/369Tvv/jp16qhOnTqu10ePHtXHH3+s4cOHS5IyMjIUHByswYMHa+vWrWrQoIGefPJJNW/eXFlZWZLklrhr1KghSTp06JDHCZ1JcQAAUzkzy92bzRv5+fkaPny4atSooT/+8Y+SpF27dik3N1cPPPCAFi1apIYNG6p///7KzMxUfn6+JMlqtbre48yfHQ6Hx59LDx0AYC5erhQnLxL6qVOn9Oijj2r37t164403FBoaKkmaOnWq8vPzFRYWJkmaNGmSfvjhB73//vu6+eabJRUn7zMl+TOJ/Ex7T9BDBwCgDJw8eVIDBw5UWlqaXnvtNbfZ7EFBQa5kLkkWi0UxMTE6fPiwoqKiJMlVej/7z5GRkR5/PgkdAGAqhpf3oZfm4SxOp1PDhg3T/v379frrr6tRo0ZuxxMTE7VgwQK383fs2KGYmBhFRUUpOjpaKSkpruMpKSmKjo72ePxcouQOADAZQ15VzUvV9p133tGGDRu0cOFCVa1a1dXDDg4OVnh4uDp16qQXXnhBTZs2VYMGDbRs2TL9+uuv6tmzpySpb9++mjNnjq6++mpJ0ty5czVgwIASxUBCBwCYSnneh34hn376qZxOpwYPHuy2v3Xr1nr99deVlJQku92uadOmKTs7W3FxcVq6dKmrDD9w4EAdPXpUw4YNU2BgoO6//34lJSWVKAYSOgAApbBjxw7Xn5csWXLRcy0Wi4YMGaIhQ4ac93hgYKCSk5OVnJxc6nhI6AAAc/FFzf0KQEIHAJiKL0ruVwJmuQMAYAL00AEA5uLtam+U3AEA8L0z96F7094fUXIHAMAE6KEDAMzFkOSjtdx9iYQOADAVb5+Y5u3T1nyFkjsAACZADx0AYC4sLAMAgP+rqAvLkNABAObjp71sbzCGDgCACXjUQz/7oeyXMmzYsFIHAwCAtyi5X8SGDRs8ejOLxT9/CAAAE2FS3IW9/vrr5R0HAADwQqnG0Pft26eZM2fq0Ucf1ZEjR/TOO+8oJSWlrGMDAKAULGWw+Z8SJ/TvvvtO99xzjw4cOKB169bJbrdr586d6t+/vz777LPyiBEAAM8ZZbD5oRIn9NmzZ2vUqFGaP3++goKKK/ZPPvmkRo8erfnz55d5gAAA4NJKnNB/+eUXtW/f/pz9t99+u/bu3VsmQQEAUGr00D1Tu3Ztbdmy5Zz9X331lWrXrl0mQQEAUHqW4qetlXbz0zH0Eq8U99hjj2nMmDHasmWLioqKtGbNGu3fv18ff/yxZs2aVR4xAgCASyhxD71Lly5asWKFjh49qkaNGunzzz+Xw+HQihUrdPfdd5dHjAAAeM743yNUS7P5a8m9VGu5N2nShN44AODKxMIynluzZo3eeustZWRkKDg4WDExMUpKSlLnzp3LOj4AAErG0G9j4V6090MlTujPPfec3njjDT300EMaPHiwnE6nUlNT9eSTT2rEiBFKSkoqhzABAMDFlDihr1y5UjNnzlTHjh1d+26//XY1adJE06dPJ6EDAHzLkCyU3C/NMAzVqlXrnP0NGjSQ3W4vk6AAACi1CjqGXuJZ7sOGDdPEiROVkZHh2peZmanp06dryJAhZRocAADwjEc99CZNmrg9GtUwDHXv3l2hoaEKCAjQqVOnZLFYlJ6eroEDB5ZbsAAAXJrFu0lxZl5YZtmyZeUdBwAAZaOCltw9SuitW7f26M2OHDniVTAAAKB0SjwpbufOnZozZ47S09NVVFQkqbgE73A4dOzYMW3btq3MgwQAwGMVtIde4klx48eP17FjxzRw4EBlZ2drwIAB6tq1q06ePKnp06eXR4wAAHiugj5trcQ99C1btmjlypVq2rSp1qxZo5iYGP3pT39SgwYN9M4776hnz57lEScAALiIEvfQg4KCVKVKFUlSTEyMfv75Z0nSzTffrB07dpRtdAAAlJQ3j041PJsh73A41L17d23YsMG1b9++fUpKSlKLFi109913a/369W5t/vvf/6p79+6Ki4vTQw89pH379rkdf/XVV3XrrbcqPj5eY8eOVV5eXokuu8QJPT4+XkuWLFF+fr5uuOEGffHFFzIMQ1u3bpXNZivp2wEAUKYsKl4prtTbJd7fbrdr5MiRSktLc+0zDENDhw5VjRo1tHr1at17770aNmyYDh48KEk6ePCghg4dql69eumdd95R9erV9eijj8owiuv7n376qRYsWKApU6botdde0+bNmzV79uwSXXeJE3pycrLWr1+vN954Q/fee6+OHj2q1q1ba+TIkerXr19J3w4AgLJVjmPo6enp6t27t/bu3eu2/9tvv9W+ffs0ZcoUNWzYUIMHD1aLFi20evVqSdKqVat0ww03aMCAAWrUqJFmzJihAwcOaOPGjZKKbw/v37+/OnbsqObNm2vy5MlavXp1iXrpJR5Dv/baa/XZZ58pPz9foaGhWr16tTZu3Kjw8HC1aNGipG8HAIDf2Lhxo9q0aaPHH3/cLedt3rxZ119/vSpV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EFWtWtXrz/WGXyT0oKAgRURQbgcAf1ZePfOzWa3W8ybistK0aVMFBQVp06ZNSkhIkCSlpKSoWbNmPu9w0t0FAMBDoaGh6tGjhyZNmqTU1FStXbtWr7zyih566CFfh0ZCh7srdQUkoKw5HA51795dGzZs8HUo8DPJycmKjY1V//79NXnyZA0fPlx33HGHr8Pyj5I7Lp8rdQUkoCzZ7XaNGjVKaWlpvg4Ffig0NFQzZ87UzJkzfR2KGxI6XK7kFZCAspKenq5Ro0bJ8NMnagEXQskdLlfyCkhAWdm4caPatGmjlStX+joUoEzRQ4fLpVZAql69ug+jA8pGv379fB0CUC7oocPlSl4BCQBwcSR0uFzJKyABAC6OhA6Xs1dAOuNKWQEJAHBxJHS4nL0C0hlXygpIAICL419puFzJKyABAC6OWe5wk5ycrEmTJql///4KCwu7YlZAAgBcnMVgdQUAAPweJXcAAEyAhA4AgAmQ0AEAMAESOgAAJkBCBwDABEjoAACYAAkdAAATIKEDAGACJHSYUqdOndS4cWPXFhsbq65du+rVV18t089JTEzU888/L0kaM2aMxowZc8k2DodDb7/9dqk/891331WnTp1KfOz3nn/+eSUmJpY6jsaNG2vDhg2lbg+gbLH0K0xr7NixuvvuuyVJhYWF+vbbbzVu3DiFh4erR48eZf5548aN8+i8jz/+WC+99JJ69+5d5jEAqLjoocO0qlSposjISEVGRqpWrVrq2bOnbrrpJn322Wfl9nlVqlS55HmstgygPJDQUaEEBQUpODhYUnG5fOrUqbr99tvVoUMHnTx5UpmZmRoyZIji4uLUqVMnLViwQEVFRa72//73v3XnnXeqRYsWmjJlitux35fc33//fXXt2lVxcXHq06ePtm3bpg0bNig5OVkHDhxQ48aNtX//fhmGoRdeeEHt2rVTQkKChgwZooMHD7re5/Dhw/rLX/6iFi1aqGfPntq7d6/H1/v555+rR48eatasmRISEjRy5EidOnXKdbygoEDjxo1TXFycOnfurH/+85+uY5eKC8CVhYSOCqGgoECfffaZ/vOf/+j222937X/33Xc1e/ZsLViwQJUrV9awYcMUERGh9957TzNmzNCHH36ol156SZKUnp6uxx57TH379tXq1atVWFiolJSU837eunXrNG7cOPXv318ffPCBbrjhBg0ePFjx8fEaO3asrr76aq1fv161atXS8uXL9eGHH2ru3LlauXKlIiIiNGDAABUUFEiS/vrXv8rpdGrVqlV6+OGH9dprr3l0zXv37tVf//pX9evXT//617/03HPP6b///a/b+P2PP/7o+jn07dtXo0eP1p49eyTpknEBuLIwhg7TmjhxoqZOnSpJys/PV0hIiPr376977rnHdU6HDh104403SpK++eYbHTx4UKtWrVJAQIBiYmL01FNPKTk5WUOHDtXq1auVkJCgpKQkSdL48eP15ZdfnvezV65cqe7du6tv376SpCeffFLBwcHKzc1VlSpVFBgYqMjISEnSyy+/rIkTJ6pNmzaSpClTpqhdu3Zat26d6tatqx9//FFffvmloqOj1ahRI23dulWffPLJJa/f6XTq6aefdo3V16lTRzfffLPS0tJc59SsWVOTJk1ScHCwGjZsqK+++kqrVq3S6NGjLxqXpxPvAFw+JHSY1ogRI1zPcrfZbIqMjFRgYKDbObVr13b9OSMjQzk5OWrZsqVrn9PpVH5+vo4fP66MjAw1bdrUdSw4ONjt9dl27dqlPn36uF5brVY99dRT55x36tQpHTp0SI8//rgCAv5XMMvPz9fu3btlt9sVHh6u6Oho17FmzZp5lNDr168vq9WqhQsXKi0tTWlpaUpPT9e9997rOqdp06auIQhJio2NVUZGxiXjAnDlIaHDtCIiIlSvXr2LnmOz2Vx/LiwsVExMjF588cVzzjsz2e33E9rOToZnCwry7H+tM2Pw8+bNU4MGDdyOVatWTd98843Hn/l727dvV9++fdWpUydXZeH35fqzk7VU/AUmODj4knEBuPIwhg78pkGDBjp48KCqV6+uevXqqV69etq/f7/mz58vi8WiRo0aacuWLa7znU6ntm/fft73qlevntuxoqIiderUSSkpKbJYLK79VatWVUREhLKyslyfWatWLc2ePVu7du3Sddddp9zcXNe4tiT9/PPPHl3P+++/r1atWmnu3Lnq16+fmjdvrj179rh9QTi7/C5JqampiomJuWRcAK48JHTgN+3atVPt2rX1xBNPaMeOHfr+++81fvx4hYaGKjAwUL1799bWrVu1cOFC7dy5UzNnzrzgrO/ExER98MEHeu+997Rnzx7NmDFDhmEoNjZWoaGhys3N1e7du1VYWKikpCQ999xz+uKLL7R79249/fTT+uGHHxQTE6OGDRvqpptu0tixY7V9+3atXbtWy5cv9+h6wsPDtWPHDqWmpmrXrl169tlntWXLFjkcDtc5Bw8e1NSpU5WRkaEXXnhB27Ztc437XywuAFceSu7AbwIDA7Vw4UJNnTpVvXv3VqVKldS1a1fX2He9evW0cOFCzZgxQwsXLlTnzp3Vvn37875Xq1atNHHiRL3wwgvKysrSDTfcoJdeekkhISFq27at6tWrpz/84Q964403NHDgQJ06dUoTJkzQyZMndcMNN2jJkiWu0vbf//53jR8/Xn369FF0dLQSExP17rvvXvJ6EhMTtW3bNiUlJclms6lVq1YaOnSoPv74Y9c57du3V05Ojnr27KnatWtr4cKFioqKkqRLxgXgymIxWOUCAAC/R8kdAAATIKEDAGACJHQAAEyAhA4AgAmQ0AEAMAESOgAAJkBCBwDABEjoAACYAAkdAAATIKEDAGACJHQAAEyAhA4AgAn8P19I4BoyoJ/BAAAAAElFTkSuQmCC"}}], "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'classifier_evaluation_b';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="EDA Case Study" href="EDA_activity.html" />
+    <link rel="prev" title="Classification II: Logistic Regression" href="logistic_starter_code.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="syllabus.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Data Bootcamp - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Data Bootcamp - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="syllabus.html">
+                    Data Bootcamp
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Python and `pandas`</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data-types.html">Intro to Python and Jupyter Notebooks</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="iteration.html">Iteration and Control Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises.html">Python Iteration and Control Flow Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oop.html">Functions and Classes</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="pandas_intro.html">Introduction to <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_II.html">Reading Files and Split Apply Combine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting_seaborn.html">More plotting with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">seaborn</span></code></a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="plotting_activity.html">Data and Plotting with <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and <code class="docutils literal notranslate"><span class="pre">seaborn</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Accessing Data with API’s</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="data_apis-II.html">Accessing Data with API’s</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="html_data.html">Extracting Data From HTML</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="eda_warmup.html">Example Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datetimes.html">Handling Missing Values and Using <code class="docutils literal notranslate"><span class="pre">datetime</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="rolling_statistics.html">Learning Objectives</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="streamlit_intro.html">Midterm Setup and Intro to <code class="docutils literal notranslate"><span class="pre">streamlit</span></code></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supervised and Unsupervised Learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="unsupervised_learning.html">Unsupervised Learning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="segmentation_problem.html">Clustering Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression_intro.html">Introduction to Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practice_regression.html">Regression Part II</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="polynomial_models.html">Model Complexity and Evaluation</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="knn_classification.html">Introduction to Classification and K-Nearest Neighbors</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="logistic_starter_code.html">Classification II: Logistic Regression</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Evaluating Classification Models</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homework and Activities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="EDA_activity.html">EDA Case Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_practice.html">Pandas and Plotting Practice</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="extra_resources.html">Supplemental Reading</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jfkoehler/nyu_bootcamp_spr26/blob/main/classifier_evaluation_b.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_spr26" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jfkoehler/nyu_bootcamp_spr26/issues/new?title=Issue%20on%20page%20%2Fclassifier_evaluation_b.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/classifier_evaluation_b.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Evaluating Classification Models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Evaluating Classification Models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experimenting-with-n-neighbors">Experimenting with <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-for-a-grid-search">Parameters for a grid search</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Problem</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#precisionrecalldisplay"><code class="docutils literal notranslate"><span class="pre">PrecisionRecallDisplay</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-positives">Predicting Positives</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#marketing-problem">Marketing Problem</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exit-ticket">Exit Ticket</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="evaluating-classification-models">
+<h1>Evaluating Classification Models<a class="headerlink" href="#evaluating-classification-models" title="Link to this heading">#</a></h1>
+<p><strong>OBJECTIVES</strong></p>
+<ul class="simple">
+<li><p>Use the confusion matrix to evaluate classification models</p></li>
+<li><p>Use precision and recall to evaluate a classifier</p></li>
+<li><p>Explore lift and gain to evaluate classifiers</p></li>
+<li><p>Determine cost of predicting highest probability targets</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">PolynomialFeatures</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_transformer</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span><span class="p">,</span> <span class="n">load_digits</span><span class="p">,</span> <span class="n">fetch_openml</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem">
+<h1>Problem<a class="headerlink" href="#problem" title="Link to this heading">#</a></h1>
+<p>Below, a dataset with information on individuals and whether or not they have heart disease is loaded and displayed.  A <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> and <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code> are used to build predictive models on train/test splits.  Examine the  confusion matrices and explore the classifiers mistakes.</p>
+<ul class="simple">
+<li><p>Which model do you prefer and why?</p></li>
+<li><p>Do you care about predicting each of these classes equally?</p></li>
+<li><p>Is there a ratio other than accuracy you think is more important based on the confusion matrix?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heart</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="n">data_id</span><span class="o">=</span><span class="mi">43823</span><span class="p">)</span><span class="o">.</span><span class="n">frame</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heart</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Sex</th>
+      <th>Chest_pain_type</th>
+      <th>BP</th>
+      <th>Cholesterol</th>
+      <th>FBS_over_120</th>
+      <th>EKG_results</th>
+      <th>Max_HR</th>
+      <th>Exercise_angina</th>
+      <th>ST_depression</th>
+      <th>Slope_of_ST</th>
+      <th>Number_of_vessels_fluro</th>
+      <th>Thallium</th>
+      <th>Heart_Disease</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>70</td>
+      <td>1</td>
+      <td>4</td>
+      <td>130</td>
+      <td>322</td>
+      <td>0</td>
+      <td>2</td>
+      <td>109</td>
+      <td>0</td>
+      <td>2.4</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>Presence</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>67</td>
+      <td>0</td>
+      <td>3</td>
+      <td>115</td>
+      <td>564</td>
+      <td>0</td>
+      <td>2</td>
+      <td>160</td>
+      <td>0</td>
+      <td>1.6</td>
+      <td>2</td>
+      <td>0</td>
+      <td>7</td>
+      <td>Absence</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>57</td>
+      <td>1</td>
+      <td>2</td>
+      <td>124</td>
+      <td>261</td>
+      <td>0</td>
+      <td>0</td>
+      <td>141</td>
+      <td>0</td>
+      <td>0.3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7</td>
+      <td>Presence</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>64</td>
+      <td>1</td>
+      <td>4</td>
+      <td>128</td>
+      <td>263</td>
+      <td>0</td>
+      <td>0</td>
+      <td>105</td>
+      <td>1</td>
+      <td>0.2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>7</td>
+      <td>Absence</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>74</td>
+      <td>0</td>
+      <td>2</td>
+      <td>120</td>
+      <td>269</td>
+      <td>0</td>
+      <td>2</td>
+      <td>121</td>
+      <td>1</td>
+      <td>0.2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Absence</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heart</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 270 entries, 0 to 269
+Data columns (total 14 columns):
+ #   Column                   Non-Null Count  Dtype  
+---  ------                   --------------  -----  
+ 0   Age                      270 non-null    int64  
+ 1   Sex                      270 non-null    int64  
+ 2   Chest_pain_type          270 non-null    int64  
+ 3   BP                       270 non-null    int64  
+ 4   Cholesterol              270 non-null    int64  
+ 5   FBS_over_120             270 non-null    int64  
+ 6   EKG_results              270 non-null    int64  
+ 7   Max_HR                   270 non-null    int64  
+ 8   Exercise_angina          270 non-null    int64  
+ 9   ST_depression            270 non-null    float64
+ 10  Slope_of_ST              270 non-null    int64  
+ 11  Number_of_vessels_fluro  270 non-null    int64  
+ 12  Thallium                 270 non-null    int64  
+ 13  Heart_Disease            270 non-null    object 
+dtypes: float64(1), int64(12), object(1)
+memory usage: 29.7+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">cross_val_score</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">heart</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">heart</span><span class="p">[</span><span class="s1">&#39;Heart_Disease&#39;</span><span class="p">]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">11</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#instantiate estimator with appropriate parameters</span>
+<span class="n">lgr</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">knn</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#models require scaling data first</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#instantiate Pipeline&#39;s for each model</span>
+<span class="n">lgr_pipe</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">knn_pipe</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#fit the models on the training data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot confusion matrices</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fig, ax = plt.subplots(1, 2, figsize = (20, 5))</span>
+<span class="c1"># ConfusionMatrixDisplay.from_estimator(lgr_pipe, X_test, y_test, ax = ax[0])</span>
+<span class="c1"># ConfusionMatrixDisplay.from_estimator(knn_pipe, X_test, y_test, ax = ax[1])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="experimenting-with-n-neighbors">
+<h1>Experimenting with <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code><a class="headerlink" href="#experimenting-with-n-neighbors" title="Link to this heading">#</a></h1>
+<p>In the example above, we used a single value for <code class="docutils literal notranslate"><span class="pre">k</span></code> to predict heart disease.  As we discussed, different numbers of neighbors may be appropriate in different problems. To experiment with different numbers of neighbors we can use a <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> to search over different values of <code class="docutils literal notranslate"><span class="pre">k</span></code> and select the parameters that do the best at predicting on a test set.  Below, its use is demonstrated using a single estimator and a pipeline.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;algorithm&#39;: &#39;auto&#39;,
+ &#39;leaf_size&#39;: 30,
+ &#39;metric&#39;: &#39;minkowski&#39;,
+ &#39;metric_params&#39;: None,
+ &#39;n_jobs&#39;: None,
+ &#39;n_neighbors&#39;: 5,
+ &#39;p&#39;: 2,
+ &#39;weights&#39;: &#39;uniform&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<section id="parameters-for-a-grid-search">
+<h2>Parameters for a grid search<a class="headerlink" href="#parameters-for-a-grid-search" title="Link to this heading">#</a></h2>
+<p>Whatever the parameters are for your model, <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> accepts a dictionary of the form:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;parameter_name&#39;</span><span class="p">:</span> <span class="n">values</span> <span class="n">to</span> <span class="n">search</span> <span class="n">over</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>or when you are searching a pipeline (note the double underscore):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;named_step_in_pipeline__parameter_name&#39;</span><span class="p">:</span> <span class="n">values</span> <span class="n">to</span> <span class="n">search</span> <span class="n">over</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#test 5, 9, 13, 17, 21, 29, and 39 neighbors</span>
+<span class="n">params_to_search</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">39</span><span class="p">]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">knn</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">params_to_search</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(estimator=KNeighborsClassifier(),
+             param_grid={&#x27;n_neighbors&#x27;: [5, 9, 13, 17, 21, 29, 39]})</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;GridSearchCV<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.model_selection.GridSearchCV.html">?<span>Documentation for GridSearchCV</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>GridSearchCV(estimator=KNeighborsClassifier(),
+             param_grid={&#x27;n_neighbors&#x27;: [5, 9, 13, 17, 21, 29, 39]})</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">best_estimator_: KNeighborsClassifier</label><div class="sk-toggleable__content fitted"><pre>KNeighborsClassifier(n_neighbors=21)</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;KNeighborsClassifier<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.neighbors.KNeighborsClassifier.html">?<span>Documentation for KNeighborsClassifier</span></a></label><div class="sk-toggleable__content fitted"><pre>KNeighborsClassifier(n_neighbors=21)</pre></div> </div></div></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_params_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;n_neighbors&#39;: 21}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">grid_search</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+<span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean_fit_time</th>
+      <th>std_fit_time</th>
+      <th>mean_score_time</th>
+      <th>std_score_time</th>
+      <th>param_n_neighbors</th>
+      <th>params</th>
+      <th>split0_test_score</th>
+      <th>split1_test_score</th>
+      <th>split2_test_score</th>
+      <th>split3_test_score</th>
+      <th>split4_test_score</th>
+      <th>mean_test_score</th>
+      <th>std_test_score</th>
+      <th>rank_test_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.001938</td>
+      <td>0.000637</td>
+      <td>0.003983</td>
+      <td>0.000282</td>
+      <td>5</td>
+      <td>{'n_neighbors': 5}</td>
+      <td>0.634146</td>
+      <td>0.634146</td>
+      <td>0.700</td>
+      <td>0.650</td>
+      <td>0.575</td>
+      <td>0.638659</td>
+      <td>0.039961</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.001577</td>
+      <td>0.000006</td>
+      <td>0.003827</td>
+      <td>0.000038</td>
+      <td>9</td>
+      <td>{'n_neighbors': 9}</td>
+      <td>0.682927</td>
+      <td>0.585366</td>
+      <td>0.675</td>
+      <td>0.575</td>
+      <td>0.600</td>
+      <td>0.623659</td>
+      <td>0.045918</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.001563</td>
+      <td>0.000020</td>
+      <td>0.003824</td>
+      <td>0.000047</td>
+      <td>13</td>
+      <td>{'n_neighbors': 13}</td>
+      <td>0.658537</td>
+      <td>0.634146</td>
+      <td>0.675</td>
+      <td>0.575</td>
+      <td>0.600</td>
+      <td>0.628537</td>
+      <td>0.036799</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.001526</td>
+      <td>0.000004</td>
+      <td>0.003773</td>
+      <td>0.000050</td>
+      <td>17</td>
+      <td>{'n_neighbors': 17}</td>
+      <td>0.658537</td>
+      <td>0.634146</td>
+      <td>0.700</td>
+      <td>0.550</td>
+      <td>0.600</td>
+      <td>0.628537</td>
+      <td>0.051031</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.001636</td>
+      <td>0.000148</td>
+      <td>0.003932</td>
+      <td>0.000095</td>
+      <td>21</td>
+      <td>{'n_neighbors': 21}</td>
+      <td>0.682927</td>
+      <td>0.634146</td>
+      <td>0.650</td>
+      <td>0.600</td>
+      <td>0.650</td>
+      <td>0.643415</td>
+      <td>0.026902</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.001621</td>
+      <td>0.000041</td>
+      <td>0.004009</td>
+      <td>0.000103</td>
+      <td>29</td>
+      <td>{'n_neighbors': 29}</td>
+      <td>0.658537</td>
+      <td>0.609756</td>
+      <td>0.675</td>
+      <td>0.575</td>
+      <td>0.550</td>
+      <td>0.613659</td>
+      <td>0.047621</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.002349</td>
+      <td>0.000884</td>
+      <td>0.005409</td>
+      <td>0.000697</td>
+      <td>39</td>
+      <td>{'n_neighbors': 39}</td>
+      <td>0.682927</td>
+      <td>0.658537</td>
+      <td>0.625</td>
+      <td>0.575</td>
+      <td>0.600</td>
+      <td>0.628293</td>
+      <td>0.038861</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">&#39;mean_test_score&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;param_n_neighbors&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;mean_test_score&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Results of experiment on n_neighbors&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of neighbors&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Accuracy on test set&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a9d068b43268667535948ba53223e914e39cbad2096feacd6807cef44a5fafb7.png" src="_images/a9d068b43268667535948ba53223e914e39cbad2096feacd6807cef44a5fafb7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn_pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s1">&#39;knn&#39;</span><span class="p">,</span> <span class="n">KNeighborsClassifier</span><span class="p">())])</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;knn__n_neighbors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">39</span><span class="p">]}</span>
+<span class="n">grid_for_pipeline</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">knn_pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_for_pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-2 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-2 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-2 pre {
+  padding: 0;
+}
+
+#sk-container-id-2 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-2 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-2 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-2 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-2 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-2 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-2 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-2 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-2 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-2 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label label.sk-toggleable__label,
+#sk-container-id-2 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-2 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-2 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-2 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-2 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-2 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-2 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(estimator=Pipeline(steps=[(&#x27;scale&#x27;, StandardScaler()),
+                                       (&#x27;knn&#x27;, KNeighborsClassifier())]),
+             param_grid={&#x27;knn__n_neighbors&#x27;: [5, 9, 13, 17, 21, 29, 39]})</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;GridSearchCV<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.model_selection.GridSearchCV.html">?<span>Documentation for GridSearchCV</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>GridSearchCV(estimator=Pipeline(steps=[(&#x27;scale&#x27;, StandardScaler()),
+                                       (&#x27;knn&#x27;, KNeighborsClassifier())]),
+             param_grid={&#x27;knn__n_neighbors&#x27;: [5, 9, 13, 17, 21, 29, 39]})</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">best_estimator_: Pipeline</label><div class="sk-toggleable__content fitted"><pre>Pipeline(steps=[(&#x27;scale&#x27;, StandardScaler()), (&#x27;knn&#x27;, KNeighborsClassifier())])</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-7" type="checkbox" ><label for="sk-estimator-id-7" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;KNeighborsClassifier<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.neighbors.KNeighborsClassifier.html">?<span>Documentation for KNeighborsClassifier</span></a></label><div class="sk-toggleable__content fitted"><pre>KNeighborsClassifier()</pre></div> </div></div></div></div></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_for_pipeline</span><span class="o">.</span><span class="n">best_params_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;knn__n_neighbors&#39;: 5}
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Expanding our metrics</strong></p>
+<p><a class="reference internal" href="#"><span class="xref myst"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/PrecisionrecallDogExample.svg/960px-PrecisionrecallDogExample.svg.png" width=20% /></span></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">grid_for_pipeline</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x133641cd0&gt;
+</pre></div>
+</div>
+<img alt="_images/e45a0dae902a77032c76b59e158e4d6cc52bc86febb4a466830eac1a7d57e3f7.png" src="_images/e45a0dae902a77032c76b59e158e4d6cc52bc86febb4a466830eac1a7d57e3f7.png" />
+</div>
+</div>
+<p><strong>Problem</strong></p>
+<p>In our heart disease example, do you think you care more about predicting the presence of heart disease or the absence of it?  As such, which metric is more appropriate, precision or recall?  Look back at your confusion matrices and calculate the updated metric – which estimator was better?</p>
+<p>What is happening with the code below?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_train_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_train</span> <span class="o">==</span> <span class="s1">&#39;Presence&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">y_test_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="s1">&#39;Presence&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_to_select_best_recall</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">knn_pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s1">&#39;recall&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_num</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best recall: </span><span class="si">{</span><span class="n">grid_to_select_best_recall</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_test_num</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best recall: 0.84
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_to_select_best_precision</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">knn_pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s1">&#39;precision&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_num</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best precision: </span><span class="si">{</span><span class="n">grid_to_select_best_precision</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_test_num</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best precision: 0.7241379310344828
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h1>Problem<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>Below, a dataset around customer churn is loaded and displayed.  Classification models on the data are given and their confusion matrices.</p>
+<ul class="simple">
+<li><p>Suppose you want to offer an incentive to customers you think are likely to churn, what is an appropriate evaluation metric? Why?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">churn</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="n">data_id</span> <span class="o">=</span> <span class="mi">43390</span><span class="p">)</span><span class="o">.</span><span class="n">frame</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">churn</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>RowNumber</th>
+      <th>CustomerId</th>
+      <th>Surname</th>
+      <th>CreditScore</th>
+      <th>Geography</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Tenure</th>
+      <th>Balance</th>
+      <th>NumOfProducts</th>
+      <th>HasCrCard</th>
+      <th>IsActiveMember</th>
+      <th>EstimatedSalary</th>
+      <th>Exited</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>15634602</td>
+      <td>Hargrave</td>
+      <td>619</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>42</td>
+      <td>2</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>101348.88</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>15647311</td>
+      <td>Hill</td>
+      <td>608</td>
+      <td>Spain</td>
+      <td>Female</td>
+      <td>41</td>
+      <td>1</td>
+      <td>83807.86</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>112542.58</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>15619304</td>
+      <td>Onio</td>
+      <td>502</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>42</td>
+      <td>8</td>
+      <td>159660.80</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113931.57</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>15701354</td>
+      <td>Boni</td>
+      <td>699</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>39</td>
+      <td>1</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>93826.63</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>15737888</td>
+      <td>Mitchell</td>
+      <td>850</td>
+      <td>Spain</td>
+      <td>Female</td>
+      <td>43</td>
+      <td>2</td>
+      <td>125510.82</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>79084.10</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">churn</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">churn</span><span class="p">[</span><span class="s1">&#39;Exited&#39;</span><span class="p">]</span>
+<span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Surname&#39;</span><span class="p">,</span> <span class="s1">&#39;RowNumber&#39;</span><span class="p">,</span> <span class="s1">&#39;CustomerId&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">11</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">encoder</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">((</span><span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="s1">&#39;first&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;Geography&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">]),</span>
+                                  <span class="n">remainder</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn_pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;transform&#39;</span><span class="p">,</span> <span class="n">encoder</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">KNeighborsClassifier</span><span class="p">())])</span>
+<span class="n">lgr_pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;transform&#39;</span><span class="p">,</span> <span class="n">encoder</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">())])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">lgr_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-3 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-3 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-3 pre {
+  padding: 0;
+}
+
+#sk-container-id-3 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-3 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-3 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-3 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-3 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-3 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-3 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-3 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-3 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-3 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-3 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-3 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-3 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-3 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-3 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-3 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-3 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-3 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-3 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-3 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-3 div.sk-label label.sk-toggleable__label,
+#sk-container-id-3 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-3 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-3 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-3 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-3 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-3 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-3 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-3 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-3 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-3 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-3 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-3 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;transform&#x27;,
+                 ColumnTransformer(remainder=StandardScaler(),
+                                   transformers=[(&#x27;onehotencoder&#x27;,
+                                                  OneHotEncoder(drop=&#x27;first&#x27;),
+                                                  [&#x27;Geography&#x27;, &#x27;Gender&#x27;])])),
+                (&#x27;model&#x27;, LogisticRegression())])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-8" type="checkbox" ><label for="sk-estimator-id-8" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;Pipeline<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>Pipeline(steps=[(&#x27;transform&#x27;,
+                 ColumnTransformer(remainder=StandardScaler(),
+                                   transformers=[(&#x27;onehotencoder&#x27;,
+                                                  OneHotEncoder(drop=&#x27;first&#x27;),
+                                                  [&#x27;Geography&#x27;, &#x27;Gender&#x27;])])),
+                (&#x27;model&#x27;, LogisticRegression())])</pre></div> </div></div><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-9" type="checkbox" ><label for="sk-estimator-id-9" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;transform: ColumnTransformer<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.compose.ColumnTransformer.html">?<span>Documentation for transform: ColumnTransformer</span></a></label><div class="sk-toggleable__content fitted"><pre>ColumnTransformer(remainder=StandardScaler(),
+                  transformers=[(&#x27;onehotencoder&#x27;, OneHotEncoder(drop=&#x27;first&#x27;),
+                                 [&#x27;Geography&#x27;, &#x27;Gender&#x27;])])</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-10" type="checkbox" ><label for="sk-estimator-id-10" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">onehotencoder</label><div class="sk-toggleable__content fitted"><pre>[&#x27;Geography&#x27;, &#x27;Gender&#x27;]</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-11" type="checkbox" ><label for="sk-estimator-id-11" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;OneHotEncoder<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.OneHotEncoder.html">?<span>Documentation for OneHotEncoder</span></a></label><div class="sk-toggleable__content fitted"><pre>OneHotEncoder(drop=&#x27;first&#x27;)</pre></div> </div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-12" type="checkbox" ><label for="sk-estimator-id-12" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">remainder</label><div class="sk-toggleable__content fitted"><pre>[&#x27;CreditScore&#x27;, &#x27;Age&#x27;, &#x27;Tenure&#x27;, &#x27;Balance&#x27;, &#x27;NumOfProducts&#x27;, &#x27;HasCrCard&#x27;, &#x27;IsActiveMember&#x27;, &#x27;EstimatedSalary&#x27;]</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-13" type="checkbox" ><label for="sk-estimator-id-13" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-14" type="checkbox" ><label for="sk-estimator-id-14" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;LogisticRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a></label><div class="sk-toggleable__content fitted"><pre>LogisticRegression()</pre></div> </div></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot confusion matrices</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">lgr_pipe</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Logistic Model&#39;</span><span class="p">)</span>
+<span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">knn_pipe</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;KNN Model&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e3e31e54ec7a0db47fb384d9ce00001f741aaaf99cc7eac871b64c7760735107.png" src="_images/e3e31e54ec7a0db47fb384d9ce00001f741aaaf99cc7eac871b64c7760735107.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pr_computer</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">lgr_pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;transform&#39;</span><span class="p">,</span> <span class="n">encoder</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">())])</span>
+    <span class="n">lgr_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">ps</span> <span class="o">=</span> <span class="n">lgr_pipe</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">yhat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ps</span> <span class="o">&gt;</span> <span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_predictions</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">yhat</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Precision </span><span class="si">{</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">yhat</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s1">Recall: </span><span class="si">{</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">yhat</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interact</span><span class="p">(</span><span class="n">pr_computer</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mf">.05</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "f4034581af5d489c89c73a9b39c7b214"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.pr_computer(p)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="precisionrecalldisplay">
+<h1><code class="docutils literal notranslate"><span class="pre">PrecisionRecallDisplay</span></code><a class="headerlink" href="#precisionrecalldisplay" title="Link to this heading">#</a></h1>
+<p>The idea of precision and recall combined with what we saw with changing the probability threshold allows us to understand how precision and recall interact as you run through different probability of positive classes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">PrecisionRecallDisplay</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot precision recall curves</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">PrecisionRecallDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">lgr_pipe</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">plot_chance_level</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># ax[0].plot(x1, y1, &#39;ro&#39;, label = f&#39;({x1, y1})&#39;)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Logistic Model&#39;</span><span class="p">)</span>
+<span class="n">PrecisionRecallDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">knn_pipe</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">plot_chance_level</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;KNN Model&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6cbb40136cbed4b6ebd4ec051dfe3a4a2ab25906f42e30006ac26c01fc4f937d.png" src="_images/6cbb40136cbed4b6ebd4ec051dfe3a4a2ab25906f42e30006ac26c01fc4f937d.png" />
+</div>
+</div>
+<p>Suppose you need to maintain a recall of .6.  What kind of precision do you expect?</p>
+</section>
+<section id="predicting-positives">
+<h1>Predicting Positives<a class="headerlink" href="#predicting-positives" title="Link to this heading">#</a></h1>
+<p>Return to the churn example and a Logistic Regression model on the data.</p>
+<ol class="arabic simple">
+<li><p>If you were to make predictions on a random 30% of the data, what percent of the true positives would you expect to capture?</p></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p>Use the predict probability capabilities of the estimator to create a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with the following columns:</p></li>
+</ol>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>probability of prediction = 1</p></th>
+<th class="head"><p>true label</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>.8</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>.7</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>.4</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Sort the probabilities from largest to smallest.  What percentage of the total positives are in the first 3000 rows? What does this tell you about your classifier?</p></li>
+</ol>
+</section>
+<section id="marketing-problem">
+<h1>Marketing Problem<a class="headerlink" href="#marketing-problem" title="Link to this heading">#</a></h1>
+<p>Below, a dataset relating to a Portugese Bank Marketing Campaign is loaded and displayed.  Your goal is to build a classifier that optimizes to either precision or recall using whichever metric you think is most appropriate.  Estimate the lift your classifier has if you were to contact 20% of the customers most likely to subscribe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bank</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="n">data_id</span><span class="o">=</span><span class="mi">1461</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bank</span><span class="o">.</span><span class="n">DESCR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>**Author**: Paulo Cortez, Sérgio Moro
+**Source**: [UCI](https://archive.ics.uci.edu/ml/datasets/bank+marketing)
+**Please cite**: S. Moro, R. Laureano and P. Cortez. Using Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology. In P. Novais et al. (Eds.), Proceedings of the European Simulation and Modelling Conference - ESM&#39;2011, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.       
+
+**Bank Marketing**  
+The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be (or not) subscribed. 
+
+The classification goal is to predict if the client will subscribe a term deposit (variable y).
+
+### Attribute information  
+For more information, read [Moro et al., 2011].
+
+Input variables:
+
+- bank client data:
+
+1 - age (numeric) 
+
+2 - job : type of job (categorical: &quot;admin.&quot;,&quot;unknown&quot;,&quot;unemployed&quot;,&quot;management&quot;,&quot;housemaid&quot;,&quot;entrepreneur&quot;, &quot;student&quot;,&quot;blue-collar&quot;,&quot;self-employed&quot;,&quot;retired&quot;,&quot;technician&quot;,&quot;services&quot;) 
+
+3 - marital : marital status (categorical: &quot;married&quot;,&quot;divorced&quot;,&quot;single&quot;; note: &quot;divorced&quot;  means divorced or widowed) 
+
+4 - education (categorical: &quot;unknown&quot;,&quot;secondary&quot;,&quot;primary&quot;,&quot;tertiary&quot;) 
+
+5 - default: has credit in default? (binary: &quot;yes&quot;,&quot;no&quot;) 
+
+6 - balance: average yearly balance, in euros (numeric) 
+
+7 - housing: has housing loan? (binary: &quot;yes&quot;,&quot;no&quot;) 
+
+8 - loan: has personal loan? (binary: &quot;yes&quot;,&quot;no&quot;)
+
+- related with the last contact of the current campaign:
+
+9 - contact: contact communication type (categorical: &quot;unknown&quot;,&quot;telephone&quot;,&quot;cellular&quot;)
+
+10 - day: last contact day of the month (numeric)
+
+11 - month: last contact month of year (categorical: &quot;jan&quot;, &quot;feb&quot;, &quot;mar&quot;, ..., &quot;nov&quot;, &quot;dec&quot;)
+
+12 - duration: last contact duration, in seconds (numeric)
+
+- other attributes:
+
+13 - campaign: number of contacts performed during this campaign and for this client (numeric, includes last contact)
+
+14 - pdays: number of days that passed by after the client was last contacted from a previous campaign (numeric, -1 means client was not previously contacted) 
+
+15 - previous: number of contacts performed before this campaign and for this client (numeric) 
+
+16 - poutcome: outcome of the previous marketing campaign (categorical: &quot;unknown&quot;,&quot;other&quot;,&quot;failure&quot;,&quot;success&quot;)
+ 
+- output variable (desired target):
+
+17 - y - has the client subscribed a term deposit? (binary: &quot;yes&quot;,&quot;no&quot;)
+
+Downloaded from openml.org.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bank_df</span> <span class="o">=</span> <span class="n">bank</span><span class="o">.</span><span class="n">frame</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bank_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>V1</th>
+      <th>V2</th>
+      <th>V3</th>
+      <th>V4</th>
+      <th>V5</th>
+      <th>V6</th>
+      <th>V7</th>
+      <th>V8</th>
+      <th>V9</th>
+      <th>V10</th>
+      <th>V11</th>
+      <th>V12</th>
+      <th>V13</th>
+      <th>V14</th>
+      <th>V15</th>
+      <th>V16</th>
+      <th>Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>58</td>
+      <td>management</td>
+      <td>married</td>
+      <td>tertiary</td>
+      <td>no</td>
+      <td>2143</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>261</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>44</td>
+      <td>technician</td>
+      <td>single</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>29</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>151</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>33</td>
+      <td>entrepreneur</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>2</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>76</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bank_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 45211 entries, 0 to 45210
+Data columns (total 17 columns):
+ #   Column  Non-Null Count  Dtype   
+---  ------  --------------  -----   
+ 0   V1      45211 non-null  int64   
+ 1   V2      45211 non-null  category
+ 2   V3      45211 non-null  category
+ 3   V4      45211 non-null  category
+ 4   V5      45211 non-null  category
+ 5   V6      45211 non-null  int64   
+ 6   V7      45211 non-null  category
+ 7   V8      45211 non-null  category
+ 8   V9      45211 non-null  category
+ 9   V10     45211 non-null  int64   
+ 10  V11     45211 non-null  category
+ 11  V12     45211 non-null  int64   
+ 12  V13     45211 non-null  int64   
+ 13  V14     45211 non-null  int64   
+ 14  V15     45211 non-null  int64   
+ 15  V16     45211 non-null  category
+ 16  Class   45211 non-null  category
+dtypes: category(10), int64(7)
+memory usage: 2.8 MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exit-ticket">
+<h1>Exit Ticket<a class="headerlink" href="#exit-ticket" title="Link to this heading">#</a></h1>
+<p>Please respond to the questions <a class="reference external" href="https://forms.gle/qmCskCMq6c1scTCc8">here</a>.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="logistic_starter_code.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Classification II: Logistic Regression</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="EDA_activity.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">EDA Case Study</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Evaluating Classification Models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experimenting-with-n-neighbors">Experimenting with <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-for-a-grid-search">Parameters for a grid search</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Problem</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#precisionrecalldisplay"><code class="docutils literal notranslate"><span class="pre">PrecisionRecallDisplay</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-positives">Predicting Positives</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#marketing-problem">Marketing Problem</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exit-ticket">Exit Ticket</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jacob Frias Koehler
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
