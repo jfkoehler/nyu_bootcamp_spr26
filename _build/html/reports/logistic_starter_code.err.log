@@ -18,14 +18,16 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-hamming_distance(dna1, dna2)
+interact(make_plot, m = widgets.FloatSlider(description = r'$\beta_1$', min = 0, max = 0.1, step = 0.001),
+         b = widgets.FloatSlider(description = r'$\beta_0$', min = 9, max = 11, step = 0.1));
 ------------------
 
 
 [0;31m-------------------------------------------------------------------[0m
-[0;31mTypeError[0m                         Traceback (most recent call last)
-Cell [0;32mIn[5], line 1[0m
-[0;32m----> 1[0m [43mhamming_distance[49m[43m([49m[43mdna1[49m[43m,[49m[43m [49m[43mdna2[49m[43m)[49m
+[0;31mNameError[0m                         Traceback (most recent call last)
+Cell [0;32mIn[12], line 1[0m
+[0;32m----> 1[0m [43minteract[49m(make_plot, m [38;5;241m=[39m widgets[38;5;241m.[39mFloatSlider(description [38;5;241m=[39m [38;5;124mr[39m[38;5;124m'[39m[38;5;124m$[39m[38;5;124m\[39m[38;5;124mbeta_1$[39m[38;5;124m'[39m, [38;5;28mmin[39m [38;5;241m=[39m [38;5;241m0[39m, [38;5;28mmax[39m [38;5;241m=[39m [38;5;241m0.1[39m, step [38;5;241m=[39m [38;5;241m0.001[39m),
+[1;32m      2[0m          b [38;5;241m=[39m widgets[38;5;241m.[39mFloatSlider(description [38;5;241m=[39m [38;5;124mr[39m[38;5;124m'[39m[38;5;124m$[39m[38;5;124m\[39m[38;5;124mbeta_0$[39m[38;5;124m'[39m, [38;5;28mmin[39m [38;5;241m=[39m [38;5;241m9[39m, [38;5;28mmax[39m [38;5;241m=[39m [38;5;241m11[39m, step [38;5;241m=[39m [38;5;241m0.1[39m));
 
-[0;31mTypeError[0m: hamming_distance() takes 0 positional arguments but 2 were given
+[0;31mNameError[0m: name 'interact' is not defined
 

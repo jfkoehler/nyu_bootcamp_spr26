@@ -30,6 +30,8 @@ parts:
     - file: practice_regression
     - file: polynomial_models
     - file: knn_classification
+    - file: logistic_starter_code
+    - file: classifier_evaluation_b
   - caption: Homework and Activities
     chapters:
     - file: EDA_activity
