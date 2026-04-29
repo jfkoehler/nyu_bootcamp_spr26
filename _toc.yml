@@ -32,6 +32,7 @@ parts:
     - file: knn_classification
     - file: logistic_starter_code
     - file: classifier_evaluation_b
+    - file: forecasting_I
   - caption: Homework and Activities
     chapters:
     - file: EDA_activity
